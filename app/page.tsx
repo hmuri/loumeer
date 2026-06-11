@@ -9,7 +9,6 @@ import {
   CalendarIcon,
   LeafIcon,
   PackageIcon,
-  PadIcon,
   ShieldIcon,
   SparkleIcon,
   SunIcon,
@@ -18,17 +17,17 @@ import {
 
 const heroValues = [
   {
-    Icon: LeafIcon,
+    icon: "/loumeer_hero_assets/icon_absorption_leaf.svg",
     title: "향으로 덮지 않아요",
     body: "활성탄소섬유 기반 흡착 케어",
   },
   {
-    Icon: BriefsIcon,
+    icon: "/loumeer_hero_assets/icon_underwear_pad.svg",
     title: "속옷 안쪽에 가볍게",
     body: "피부에 직접 붙이지 않는 방식",
   },
   {
-    Icon: PadIcon,
+    icon: "/loumeer_hero_assets/icon_light_pad_square.svg",
     title: "10cm × 10cm 초경량 패드",
     body: "작고 가벼운 일회용 설계",
   },
@@ -118,7 +117,7 @@ export default function HomePage() {
             <span className="inline-flex rounded-full bg-mint-50 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-mint-700">
               Our story
             </span>
-            <h1 className="mt-5 text-[36px] font-extrabold leading-[1.22] tracking-tight text-ink-900 sm:text-[46px]">
+            <h1 className="mt-5 break-keep text-[28px] font-bold leading-[1.32] tracking-tight text-ink-900 sm:text-[38px]">
               아무도 말하지 못했던 고민을
               <br />
               가장 가볍게 해결합니다
@@ -137,19 +136,25 @@ export default function HomePage() {
             </div>
 
             <div className="mt-12 grid gap-6 border-t border-fog-300 pt-8 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-fog-300">
-              {heroValues.map(({ Icon, title, body }, i) => (
+              {heroValues.map(({ icon, title, body }, i) => (
                 <div
                   key={title}
-                  className={`flex items-start gap-3 ${
-                    i === 0 ? "sm:pr-6" : "sm:px-6"
+                  className={`flex items-center gap-3 ${
+                    i === 0 ? "sm:pr-5" : "sm:px-5"
                   }`}
                 >
-                  <Icon className="h-9 w-9 shrink-0 text-mint-700" />
+                  <Image
+                    src={icon}
+                    alt=""
+                    width={44}
+                    height={44}
+                    className="h-11 w-11 shrink-0"
+                  />
                   <div>
-                    <p className="text-sm font-extrabold leading-snug text-ink-900">
+                    <p className="break-keep text-[13px] font-bold leading-snug text-ink-900">
                       {title}
                     </p>
-                    <p className="mt-1 text-xs leading-relaxed text-ink-400">
+                    <p className="mt-0.5 break-keep text-xs leading-relaxed text-ink-400">
                       {body}
                     </p>
                   </div>
@@ -158,15 +163,14 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative min-h-[360px] overflow-hidden rounded-[24px] bg-fog-100 shadow-soft lg:min-h-[520px]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(255,255,255,0.95),rgba(255,255,255,0)_38%),linear-gradient(115deg,#ffffff_0%,#fafaf7_43%,#eef7f2_100%)]" />
+          <div className="flex items-center justify-center">
             <Image
               src={siteImages.hero}
               alt="루미어 방귀냄새 제거패드 패키지와 패드"
-              fill
+              width={515}
+              height={475}
               priority
-              sizes="(max-width: 1024px) 100vw, 55vw"
-              className="object-cover object-center mix-blend-multiply"
+              className="w-full max-w-[560px] rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
             />
           </div>
         </div>

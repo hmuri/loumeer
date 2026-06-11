@@ -4,8 +4,8 @@
  * placeholder-* 파일은 자리 표시용이에요. (IMAGES.md 참고)
  */
 export const siteImages = {
-  /** 히어로 — 패키지 + 패드 + 부드러운 빛 (현재: 실제 제품컷) */
-  hero: "/products/brand-pads-clean.jpg",
+  /** 히어로 — 제작 에셋 (public/loumeer_hero_assets) */
+  hero: "/loumeer_hero_assets/loumeer_hero_product_image_rounded.png",
   /** 필요한 순간 4종 — 뒷모습/손/사물 위주의 잔잔한 라이프스타일 컷 */
   momentCommute: "/images/placeholder-moment-commute.svg",
   momentSitting: "/images/placeholder-moment-sitting.svg",
