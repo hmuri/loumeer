@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { brand } from "@/data/brand";
 
@@ -6,10 +7,14 @@ export default function Footer() {
     <footer className="mt-24 border-t border-fog-300 bg-white">
       <div className="container-md grid gap-10 py-14 sm:grid-cols-4">
         <div className="sm:col-span-2">
-          <p className="text-base font-extrabold tracking-[0.08em] text-ink-900">
-            LOUMEER
-          </p>
-          <p className="mt-2 max-w-xs text-sm leading-relaxed text-ink-400">
+          <Image
+            src={brand.logo}
+            alt="Loumeer 로고"
+            width={130}
+            height={40}
+            className="h-8 w-auto"
+          />
+          <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-400">
             {brand.tagline}
           </p>
           <div className="mt-4 flex gap-4 text-sm font-medium text-ink-500">

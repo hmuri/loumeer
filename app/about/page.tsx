@@ -131,7 +131,16 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="card p-8 sm:p-10">
-            <p className="eyebrow">Company</p>
+            <div className="flex items-center justify-between">
+              <p className="eyebrow">Company</p>
+              <Image
+                src="/brand/profile.jpg"
+                alt="루미어 LMR 스컹크 심볼"
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-full"
+              />
+            </div>
             <h2 className="mt-3 text-xl font-extrabold tracking-tight text-ink-900">
               만드는 사람들
             </h2>
