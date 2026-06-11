@@ -16,13 +16,13 @@ body {
 
 @layer components {
   .container-md {
-    @apply mx-auto w-full max-w-[1320px] px-5 sm:px-10;
+    @apply mx-auto w-full max-w-[1320px] px-4 sm:px-10;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-mint-500 px-6 py-3 text-[15px] font-semibold text-white transition hover:bg-mint-600;
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-mint-500 px-5 py-3 text-[15px] font-semibold text-white transition hover:bg-mint-600 sm:min-h-0 sm:px-6;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-fog-300 bg-white px-6 py-3 text-[15px] font-semibold text-ink-700 transition hover:border-ink-400;
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-fog-300 bg-white px-5 py-3 text-[15px] font-semibold text-ink-700 transition hover:border-ink-400 sm:min-h-0 sm:px-6;
   }
   .card {
     @apply rounded-blob border border-fog-300 bg-white;

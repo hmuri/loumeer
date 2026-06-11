@@ -4,8 +4,8 @@ import { brand } from "@/data/brand";
 
 export default function Footer() {
   return (
-    <footer className="mt-24 border-t border-fog-300 bg-white">
-      <div className="container-md grid gap-10 py-14 sm:grid-cols-4">
+    <footer className="mt-14 border-t border-fog-300 bg-white sm:mt-24">
+      <div className="container-md grid gap-8 py-10 sm:grid-cols-4 sm:gap-10 sm:py-14">
         <div className="sm:col-span-2">
           <Image
             src={brand.logo}
@@ -14,7 +14,7 @@ export default function Footer() {
             height={40}
             className="h-8 w-auto"
           />
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-400">
+          <p className="mt-3 max-w-xs break-keep text-sm leading-relaxed text-ink-400">
             {brand.tagline}
           </p>
           <div className="mt-4 flex gap-4 text-sm font-medium text-ink-500">
@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div>
+        <div className="rounded-2xl bg-fog-50 p-4 sm:rounded-none sm:bg-transparent sm:p-0">
           <p className="text-sm font-bold text-ink-900">바로가기</p>
           <ul className="mt-3 space-y-2 text-sm text-ink-400">
             <li><Link href="/products" className="hover:text-ink-900">전체 제품</Link></li>
@@ -49,7 +49,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div>
+        <div className="rounded-2xl bg-fog-50 p-4 sm:rounded-none sm:bg-transparent sm:p-0">
           <p className="text-sm font-bold text-ink-900">고객센터</p>
           <ul className="mt-3 space-y-2 text-sm text-ink-400">
             <li className="font-semibold text-ink-700">{brand.cs.phone}</li>
@@ -67,7 +67,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-fog-200">
-        <div className="container-md py-6 text-xs leading-relaxed text-ink-400">
+        <div className="container-md py-6 text-[11px] leading-relaxed text-ink-400 sm:text-xs">
           <p>
             상호명 {brand.company.legalName} · 대표자 {brand.company.ceo} ·
             사업자등록번호 {brand.company.bizNumber} · 통신판매업신고{" "}

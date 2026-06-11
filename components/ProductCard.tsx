@@ -26,15 +26,15 @@ export default function ProductCard({ product }: { product: Product }) {
         )}
       </div>
 
-      <div className="border-t border-fog-200 p-4 sm:p-5">
-        <h3 className="line-clamp-2 break-keep text-[15px] font-bold leading-snug text-ink-900">
+      <div className="border-t border-fog-200 p-3.5 sm:p-5">
+        <h3 className="line-clamp-2 break-keep text-[14px] font-bold leading-snug text-ink-900 sm:text-[15px]">
           {product.name}
         </h3>
-        <p className="mt-1 line-clamp-1 text-[13px] text-ink-400">
+        <p className="mt-1 line-clamp-2 break-keep text-[12px] leading-snug text-ink-400 sm:line-clamp-1 sm:text-[13px]">
           {product.shortDescription}
         </p>
-        <div className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-          <span className="text-lg font-extrabold text-ink-900">
+        <div className="mt-2.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 sm:mt-3">
+          <span className="text-[17px] font-extrabold text-ink-900 sm:text-lg">
             {formatPrice(first.price)}
             {multi && <span className="text-sm font-semibold">~</span>}
           </span>

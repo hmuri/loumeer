@@ -50,53 +50,63 @@ export default function AboutPage() {
     <>
       {/* Hero */}
       <section className="border-b border-fog-300 bg-white">
-        <div className="container-md flex flex-col items-center gap-10 py-16 lg:flex-row lg:justify-center lg:gap-14 lg:py-20">
+        <div className="container-md flex flex-col items-center gap-7 py-10 sm:gap-10 sm:py-16 lg:flex-row lg:justify-center lg:gap-14 lg:py-20">
           {/* 가운데 정렬 텍스트 */}
           <div className="text-center">
             <span className="inline-flex rounded-full bg-mint-50 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-mint-700">
               Our story
             </span>
-            <h1 className="mt-5 break-keep text-[28px] font-bold leading-[1.32] tracking-tight text-ink-900 sm:text-[34px]">
+            <h1 className="mt-4 break-keep text-[27px] font-bold leading-[1.28] tracking-tight text-ink-900 sm:mt-5 sm:text-[34px]">
               아무도 말하지 못했던 고민을
               <br />
               가장 가볍게 해결합니다
             </h1>
-            <p className="mx-auto mt-5 max-w-[480px] break-keep text-[15px] leading-7 text-ink-500">
+            <p className="mx-auto mt-4 max-w-[480px] break-keep text-[14px] leading-7 text-ink-500 sm:mt-5 sm:text-[15px]">
               루미어는 일상의 냄새 고민을 조용히 해결하는 솔루션 브랜드입니다.
               향으로 덮지 않고, 과학으로 원인을 다루어 민망함 없이 편안한 하루를
               제안합니다.
             </p>
           </div>
+          <Image
+            src={siteImages.story.hero}
+            alt="루미어 브랜드 스토리"
+            width={700}
+            height={420}
+            priority
+            className="w-full rounded-[22px] shadow-[0_16px_42px_rgba(0,0,0,0.06)] sm:hidden"
+          />
         </div>
       </section>
 
       {/* 스토리 3카드 */}
-      <section className="container-md py-12">
-        <div className="grid gap-4 sm:grid-cols-3 sm:gap-6">
+      <section className="container-md py-9 sm:py-12">
+        <div className="grid gap-3 sm:grid-cols-3 sm:gap-6">
           {story.map(({ icon, title, body }) => (
-            <div key={title} className="card p-7">
+            <div key={title} className="card flex gap-4 p-5 sm:block sm:p-7">
               <Image
                 src={icon}
                 alt=""
                 width={52}
                 height={52}
-                className="h-[52px] w-[52px]"
+                className="h-11 w-11 shrink-0 sm:h-[52px] sm:w-[52px]"
               />
-              <h2 className="mt-4 whitespace-pre-line text-lg font-bold leading-snug text-ink-900">
-                {title}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink-500">
-                {body}
-              </p>
+              <div>
+                <h2 className="whitespace-pre-line text-[17px] font-bold leading-snug text-ink-900 sm:mt-4 sm:text-lg">
+                  {title}
+                </h2>
+                <p className="mt-2 break-keep text-sm leading-relaxed text-ink-500 sm:mt-3">
+                  {body}
+                </p>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
       {/* 걸어온 길 & 만드는 사람들 */}
-      <section className="container-md pb-12">
+      <section className="container-md pb-9 sm:pb-12">
         <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
-          <div className="card relative overflow-hidden p-8 sm:p-10">
+          <div className="card relative overflow-hidden p-5 sm:p-10">
             {/* 배경: 제품 스틸라이프 */}
             <Image
               src={siteImages.story.stilllife}
@@ -108,12 +118,12 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/55" />
             <div className="relative">
               <p className="eyebrow">Milestones</p>
-              <h2 className="mt-3 text-xl font-extrabold tracking-tight text-ink-900">
+              <h2 className="mt-3 text-[19px] font-extrabold tracking-tight text-ink-900 sm:text-xl">
                 루미어가 걸어온 길
               </h2>
-              <div className="relative mt-7">
+              <div className="relative mt-6 sm:mt-7">
                 <span className="absolute bottom-2 left-[4.5px] top-2 w-px bg-fog-300" />
-                <ul className="space-y-6">
+                <ul className="space-y-5 sm:space-y-6">
                   {brand.trust.map((t) => (
                     <li key={t} className="relative flex items-start gap-4">
                       <span className="relative z-10 mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-mint-500 ring-4 ring-white" />
@@ -126,7 +136,7 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-          <div className="card p-8 sm:p-10">
+          <div className="card p-5 sm:p-10">
             <div className="flex items-center justify-between">
               <p className="eyebrow">Company</p>
               <Image
@@ -137,18 +147,18 @@ export default function AboutPage() {
                 className="h-11 w-11 rounded-full"
               />
             </div>
-            <h2 className="mt-3 text-xl font-extrabold tracking-tight text-ink-900">
+            <h2 className="mt-3 text-[19px] font-extrabold tracking-tight text-ink-900 sm:text-xl">
               만드는 사람들
             </h2>
-            <p className="mt-6 text-sm leading-relaxed text-ink-500">
+            <p className="mt-5 break-keep text-sm leading-relaxed text-ink-500 sm:mt-6">
               루미어는 {brand.company.legalName}가 만듭니다. 생활 속 불편을 작은
               아이디어와 과학으로 해결하고자 모인 사람들이, 더 나은 일상을 위해
               오늘도 연구합니다.
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-ink-500">
+            <p className="mt-4 break-keep text-sm leading-relaxed text-ink-500">
               루미어는 {brand.channels.join(", ")}에서 만나실 수 있습니다.
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-ink-500">
+            <p className="mt-4 break-keep text-sm leading-relaxed text-ink-500">
               제품 문의·제휴는{" "}
               <a
                 href={`mailto:${brand.email}`}
@@ -163,25 +173,27 @@ export default function AboutPage() {
       </section>
 
       {/* 왜 루미어인가 */}
-      <section className="container-md pb-12">
-        <div className="rounded-[1.75rem] bg-mint-50/70 px-6 py-12 sm:px-10">
-          <h2 className="text-center text-2xl font-extrabold tracking-tight text-ink-900">
+      <section className="container-md pb-9 sm:pb-12">
+        <div className="rounded-[20px] bg-mint-50/70 px-4 py-8 sm:rounded-[1.75rem] sm:px-10 sm:py-12">
+          <h2 className="text-center text-[22px] font-extrabold tracking-tight text-ink-900 sm:text-2xl">
             왜 루미어인가
           </h2>
-          <div className="mt-9 grid gap-8 sm:grid-cols-3 sm:divide-x sm:divide-mint-100">
+          <div className="mt-6 grid gap-3 sm:mt-9 sm:grid-cols-3 sm:gap-8 sm:divide-x sm:divide-mint-100">
             {why.map(({ icon, title, body }) => (
-              <div key={title} className="px-2 text-center sm:px-6">
+              <div key={title} className="flex items-start gap-3 rounded-2xl bg-white/65 px-3.5 py-4 text-left sm:block sm:bg-transparent sm:px-6 sm:py-0 sm:text-center">
                 <Image
                   src={icon}
                   alt=""
                   width={56}
                   height={56}
-                  className="mx-auto h-14 w-14"
+                  className="h-11 w-11 shrink-0 sm:mx-auto sm:h-14 sm:w-14"
                 />
-                <p className="mt-4 font-extrabold text-ink-900">{title}</p>
-                <p className="mt-2 text-sm leading-relaxed text-ink-500">
-                  {body}
-                </p>
+                <div>
+                  <p className="font-extrabold text-ink-900 sm:mt-4">{title}</p>
+                  <p className="mt-1.5 break-keep text-sm leading-relaxed text-ink-500 sm:mt-2">
+                    {body}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -189,12 +201,12 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="container-md relative pb-20 text-center">
+      <section className="container-md relative pb-14 text-center sm:pb-20">
         <div className="pointer-events-none absolute bottom-0 right-0 hidden w-56 opacity-90 lg:block"></div>
-        <h2 className="text-2xl font-extrabold tracking-tight text-ink-900">
+        <h2 className="text-[22px] font-extrabold tracking-tight text-ink-900 sm:text-2xl">
           루미어가 궁금해졌다면
         </h2>
-        <div className="mt-6 flex flex-wrap justify-center gap-3">
+        <div className="mt-5 grid gap-2.5 sm:mt-6 sm:flex sm:flex-wrap sm:justify-center sm:gap-3">
           <Link href="/products" className="btn-primary">
             제품 만나보기
           </Link>

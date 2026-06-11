@@ -9,15 +9,15 @@ export const metadata: Metadata = {
 
 export default function ProductsPage() {
   return (
-    <section className="container-md py-14">
+    <section className="container-md py-9 sm:py-14">
       <p className="eyebrow">All products</p>
-      <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-ink-900">
+      <h1 className="mt-3 text-[28px] font-extrabold tracking-tight text-ink-900 sm:text-3xl">
         전체 제품
       </h1>
-      <p className="mt-3 text-ink-400">
+      <p className="mt-2 break-keep text-sm leading-relaxed text-ink-400 sm:mt-3 sm:text-base">
         구매는 네이버 스마트스토어에서 안전하게 진행돼요.
       </p>
-      <div className="mt-8">
+      <div className="mt-6 sm:mt-8">
         <ProductGrid products={products} />
       </div>
     </section>

@@ -18,7 +18,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-fog-300 bg-fog-50/95 backdrop-blur">
-      <div className="container-md flex h-16 items-center justify-between">
+      <div className="container-md flex h-14 items-center justify-between sm:h-16">
         <Link href="/" className="flex items-center gap-2.5" aria-label="루미어 홈">
           <Image
             src={brand.symbol}
@@ -26,9 +26,9 @@ export default function Header() {
             width={32}
             height={32}
             priority
-            className="h-8 w-8 rounded-lg"
+            className="h-7 w-7 rounded-lg sm:h-8 sm:w-8"
           />
-          <span className="text-lg font-extrabold tracking-[0.08em] text-ink-900">
+          <span className="text-base font-extrabold tracking-[0.08em] text-ink-900 sm:text-lg">
             LOUMEER
           </span>
         </Link>
@@ -65,7 +65,7 @@ export default function Header() {
         </nav>
 
         <button
-          className="flex h-10 w-10 items-center justify-center rounded-xl text-ink-700 hover:bg-fog-200 sm:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-fog-300 bg-white text-ink-700 shadow-soft hover:bg-fog-100 sm:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="메뉴 열기"
         >
@@ -80,13 +80,13 @@ export default function Header() {
       </div>
 
       {open && (
-        <nav className="border-t border-fog-300 bg-fog-50 px-5 py-3 sm:hidden">
+        <nav className="border-t border-fog-300 bg-white px-4 py-3 shadow-soft sm:hidden">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="block rounded-xl px-3 py-3 font-medium text-ink-700 hover:bg-fog-200"
+              className="block rounded-xl px-3 py-3 text-[15px] font-bold text-ink-700 hover:bg-fog-100"
             >
               {item.label}
             </Link>
@@ -95,7 +95,7 @@ export default function Header() {
             href={brand.smartstore}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-1 block rounded-xl border border-fog-300 bg-white px-3 py-3 text-center font-semibold text-ink-700"
+            className="mt-2 block rounded-xl bg-mint-500 px-3 py-3 text-center text-[15px] font-bold text-white"
           >
             네이버스토어에서 보기
           </a>

@@ -21,7 +21,7 @@ export default function ProductPurchase({ product }: { product: Product }) {
     : product.images;
 
   return (
-    <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
+    <div className="grid gap-7 lg:grid-cols-2 lg:gap-14">
       <ProductGallery
         key={selected}
         images={galleryImages}
@@ -29,10 +29,10 @@ export default function ProductPurchase({ product }: { product: Product }) {
       />
 
       <div className="flex flex-col">
-        <p className="text-sm font-bold text-mint-600">
+        <p className="text-[13px] font-bold text-mint-600 sm:text-sm">
           {product.shortDescription}
         </p>
-        <h1 className="mt-2 break-keep text-xl font-extrabold leading-snug tracking-tight text-ink-900 sm:text-2xl">
+        <h1 className="mt-2 break-keep text-[22px] font-extrabold leading-snug tracking-tight text-ink-900 sm:text-2xl">
           {variant.name}
         </h1>
 
@@ -47,7 +47,7 @@ export default function ProductPurchase({ product }: { product: Product }) {
         ) : null}
 
         <div className="mt-4 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-          <span className="text-[28px] font-extrabold text-ink-900">
+          <span className="text-[27px] font-extrabold text-ink-900 sm:text-[28px]">
             {formatPrice(variant.price)}
           </span>
           {variant.originalPrice && (
@@ -68,7 +68,7 @@ export default function ProductPurchase({ product }: { product: Product }) {
             <p className="text-sm font-bold text-ink-900">구성 선택</p>
             <div
               className={`mt-2.5 grid gap-2 ${
-                product.variants.length > 3 ? "grid-cols-3 sm:grid-cols-5" : "grid-cols-2"
+                product.variants.length > 3 ? "grid-cols-2 sm:grid-cols-5" : "grid-cols-2"
               }`}
             >
               {product.variants.map((v, i) => (
@@ -118,7 +118,7 @@ export default function ProductPurchase({ product }: { product: Product }) {
           </Link>
         </div>
 
-        <div className="mt-6 rounded-xl border border-fog-300 bg-white p-5 text-sm leading-relaxed text-ink-500">
+        <div className="mt-5 rounded-2xl border border-fog-300 bg-white p-4 text-sm leading-relaxed text-ink-500 sm:mt-6 sm:rounded-xl sm:p-5">
           <p className="font-bold text-ink-900">배송 안내</p>
           <p className="mt-1.5">
             결제·배송·교환/반품은 모두 네이버 스마트스토어에서 안전하게

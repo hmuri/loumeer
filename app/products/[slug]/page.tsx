@@ -84,7 +84,7 @@ export default function ProductDetailPage({
   };
 
   return (
-    <article className="container-md py-12">
+    <article className="container-md py-8 sm:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -94,21 +94,21 @@ export default function ProductDetailPage({
       <ProductPurchase product={product} />
 
       {/* 사용법 */}
-      <section className="mt-20">
-        <div className="rounded-[1.75rem] bg-fog-100 px-6 py-12 sm:px-10">
-          <h2 className="text-center text-2xl font-extrabold tracking-tight text-ink-900">
+      <section className="mt-12 sm:mt-20">
+        <div className="rounded-[20px] bg-fog-100 px-4 py-8 sm:rounded-[1.75rem] sm:px-10 sm:py-12">
+          <h2 className="text-center text-[22px] font-extrabold tracking-tight text-ink-900 sm:text-2xl">
             루미어는 이렇게 사용해요
           </h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-3 sm:gap-4">
             {steps.map(({ icon, no, title, body }) => (
-              <div key={no} className="card flex items-center gap-5 px-6 py-6">
+              <div key={no} className="card flex items-center gap-4 px-4 py-4 sm:gap-5 sm:px-6 sm:py-6">
                 <span className="text-sm font-bold text-mint-600">{no}</span>
                 <Image
                   src={icon}
                   alt=""
                   width={48}
                   height={48}
-                  className="h-12 w-12 shrink-0"
+                  className="h-11 w-11 shrink-0 sm:h-12 sm:w-12"
                 />
                 <div>
                   <p className="font-bold text-ink-900">{title}</p>
@@ -123,17 +123,17 @@ export default function ProductDetailPage({
       </section>
 
       {/* 사용 가이드 — 권장 사용 기간 & 소취 팁 */}
-      <section className="mt-12">
-        <div className="rounded-[1.75rem] bg-mint-50/70 px-6 py-11 sm:px-10">
-          <h2 className="text-center text-2xl font-extrabold tracking-tight text-ink-900">
+      <section className="mt-9 sm:mt-12">
+        <div className="rounded-[20px] bg-mint-50/70 px-4 py-8 sm:rounded-[1.75rem] sm:px-10 sm:py-11">
+          <h2 className="text-center text-[22px] font-extrabold tracking-tight text-ink-900 sm:text-2xl">
             더 확실하게 쓰는 법
           </h2>
           <p className="mx-auto mt-2 max-w-xl break-keep text-center text-sm leading-relaxed text-ink-500">
             루미어 패드는 특수 가공된 활성탄소섬유가 냄새 유발 분자를 흡착해
             가두는 방식이에요. 최상의 효과를 위해 참고해 주세요.
           </p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            <div className="card p-7">
+          <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4">
+            <div className="card p-5 sm:p-7">
               <p className="text-xs font-bold tracking-wide text-mint-600">
                 권장 사용 기간
               </p>
@@ -145,7 +145,7 @@ export default function ProductDetailPage({
                 교체해 주시는 것이 가장 이상적인 성능을 발휘합니다.
               </p>
             </div>
-            <div className="card p-7">
+            <div className="card p-5 sm:p-7">
               <p className="text-xs font-bold tracking-wide text-mint-600">
                 착용 팁 · 밀착의 중요성
               </p>
@@ -163,24 +163,24 @@ export default function ProductDetailPage({
       </section>
 
       {/* 철학 배너 — "향으로 덮지 않고, 흡착으로 줄입니다" */}
-      <section className="mt-12">
+      <section className="mt-9 sm:mt-12">
         <Image
           src={siteImages.detail.supportBanner}
           alt="향으로 덮지 않고, 흡착으로 줄입니다 — 활성탄소섬유(ACF)가 냄새 분자를 흡착해 효과적"
           width={2172}
           height={724}
-          className="w-full rounded-[24px]"
+          className="h-44 w-full rounded-[20px] object-cover object-center sm:h-auto sm:rounded-[24px]"
         />
       </section>
 
       {/* 이런 날 추천해요 */}
-      <section className="mt-12">
+      <section className="mt-9 sm:mt-12">
         <h2 className="text-xl font-extrabold tracking-tight text-ink-900">
           이런 날 추천해요
         </h2>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-4 grid gap-3 sm:mt-5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           {moments.map(({ icon, title, body }) => (
-            <div key={title} className="card p-5">
+            <div key={title} className="card p-4 sm:p-5">
               <div className="flex items-center gap-2.5">
                 <Image
                   src={icon}
@@ -200,8 +200,8 @@ export default function ProductDetailPage({
       </section>
 
       {/* 안심 근거 */}
-      <section className="mt-12">
-        <div className="card grid gap-7 px-8 py-8 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="mt-9 sm:mt-12">
+        <div className="card grid gap-4 px-5 py-5 sm:grid-cols-2 sm:gap-7 sm:px-8 sm:py-8 lg:grid-cols-4">
           {trust.map(({ icon, title, body }) => (
             <div key={title} className="flex items-start gap-3.5">
               <Image
@@ -226,7 +226,7 @@ export default function ProductDetailPage({
 
       {/* 스마트스토어 원본 상세 이미지 */}
       {product.detailImages && product.detailImages.length > 0 && (
-        <section className="mx-auto mt-20 max-w-3xl">
+        <section className="mx-auto mt-12 max-w-3xl sm:mt-20">
           <h2 className="text-xl font-extrabold tracking-tight text-ink-900">
             상세 정보
           </h2>
@@ -241,11 +241,11 @@ export default function ProductDetailPage({
 
       {/* 다른 제품 */}
       {others.length > 0 && (
-        <section className="mt-20">
+        <section className="mt-12 sm:mt-20">
           <h2 className="text-xl font-extrabold tracking-tight text-ink-900">
             다른 제품도 있어요
           </h2>
-          <div className="mt-6 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
+          <div className="mt-5 grid grid-cols-2 gap-3 sm:mt-6 sm:gap-6 lg:grid-cols-3">
             {others.map((p) => (
               <ProductCard key={p.slug} product={p} />
             ))}
