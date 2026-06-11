@@ -351,33 +351,33 @@ export default function HomePage() {
       </section>
 
       <section className="container-md py-5 pb-12">
-        <div className="grid items-center gap-6 overflow-hidden rounded-[24px] border border-mint-100 bg-mint-50 lg:grid-cols-[0.96fr_1.04fr]">
-          <div className="px-8 py-10 sm:px-12">
-            <h2 className="text-[26px] font-extrabold leading-[1.3] tracking-tight text-ink-900 sm:text-[28px]">
-              첫 경험을 가볍고 확실하게
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-ink-500">
-              4+1 스타터 구성으로 루미어를 먼저 경험해보세요.
-            </p>
-            <a
-              href={products[0].naverUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary mt-7"
-            >
-              네이버스토어에서 구매하기 ↗
-            </a>
-          </div>
-          <div className="hidden items-center justify-center px-10 py-8 lg:flex">
-            <Image
-              src={siteImages.cta}
-              alt="루미어 4+1 스타터 구성"
-              width={416}
-              height={107}
-              className="w-full max-w-[440px]"
-            />
-          </div>
+        <div className="relative overflow-hidden rounded-[24px]">
+          <Image
+            src={siteImages.cta}
+            alt="첫 경험을 가볍고 확실하게 — 4+1 스타터 구성으로 루미어를 경험해보세요"
+            width={2172}
+            height={724}
+            className="w-full"
+          />
+          {/* 좌하단 구매 버튼 (데스크탑/태블릿) */}
+          <a
+            href={products[0].naverUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary absolute bottom-[9%] left-[3.5%] hidden sm:inline-flex"
+          >
+            네이버스토어에서 구매하기 ↗
+          </a>
         </div>
+        {/* 모바일에서는 배너 아래 버튼 */}
+        <a
+          href={products[0].naverUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary mt-4 w-full sm:hidden"
+        >
+          네이버스토어에서 구매하기 ↗
+        </a>
       </section>
     </>
   );
