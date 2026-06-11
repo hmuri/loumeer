@@ -19,10 +19,10 @@ export default function ProductGrid({ products }: { products: Product[] }) {
           <button
             key={c}
             onClick={() => setCategory(c)}
-            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+            className={`rounded-xl border px-4 py-2 text-sm font-medium transition ${
               category === c
-                ? "bg-mint-500 text-white shadow-lift"
-                : "bg-white text-ink-500 shadow-soft hover:text-mint-600"
+                ? "border-ink-900 bg-ink-900 text-white"
+                : "border-fog-300 bg-white text-ink-500 hover:border-ink-400 hover:text-ink-900"
             }`}
           >
             {c}
@@ -32,7 +32,7 @@ export default function ProductGrid({ products }: { products: Product[] }) {
 
       {filtered.length === 0 ? (
         <p className="mt-16 text-center text-ink-400">
-          이 카테고리에는 아직 제품이 없어요 🌱
+          이 카테고리에는 아직 제품이 없어요.
         </p>
       ) : (
         <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">

@@ -1,11 +1,11 @@
 import type { Config } from "tailwindcss";
 
 /**
- * LOUMEER 브랜드 디자인 토큰 (실제 브랜드 컬러 기반)
- * - mint : 메인 컬러 #0FBB81 — 패키지/뱃지의 그린. 상쾌함·소취
- * - blue : 포인트 컬러 #114FEE — 공식몰 인증 뱃지 블루. 신뢰
- * - fog  : 뉴트럴 배경 — 화이트/라이트그레이 패키지 무드
- * - ink  : 텍스트 블랙 — 로고/타이포
+ * LOUMEER 디자인 토큰 — "조용하고 깨끗한 웰니스 생활 브랜드"
+ * - 배경은 아이보리 화이트, 그린은 버튼·라벨·가격 강조에만 (면적 최소화)
+ * - fog  : 배경/라인 뉴트럴 (#FAFAF7 베이스, #E9E9E4 라인)
+ * - mint : 브랜드 그린 #12B886 (포인트 전용), soft mint #E8F7F1
+ * - ink  : 텍스트 (#171717 / #777A75)
  */
 const config: Config = {
   content: [
@@ -17,36 +17,30 @@ const config: Config = {
     extend: {
       colors: {
         fog: {
-          50: "#FAFAF9",
-          100: "#F4F4F2",
-          200: "#E9E9E6",
-          300: "#DBDBD7",
+          50: "#FAFAF7",
+          100: "#F7F8F5",
+          200: "#EFEFEA",
+          300: "#E9E9E4",
         },
         mint: {
-          50: "#E9FBF4",
-          100: "#CFF6E6",
-          200: "#A2EDCF",
-          300: "#5FDDAC",
-          400: "#27CB90",
-          500: "#0FBB81",
-          600: "#0C9D6C",
-          700: "#0B7B56",
+          50: "#E8F7F1",
+          100: "#D5F1E6",
+          200: "#ABE4CF",
+          300: "#71D2AF",
+          400: "#37C194",
+          500: "#12B886",
+          600: "#0CA678",
+          700: "#099268",
         },
         blue: {
-          50: "#EBF0FE",
-          100: "#D3DFFD",
-          200: "#A8BFFA",
-          300: "#7B9CF6",
-          400: "#4674F2",
-          500: "#114FEE",
-          600: "#0E41C6",
-          700: "#0C349C",
+          50: "#EDF2FB",
+          500: "#3B5BDB",
         },
         ink: {
-          400: "#8B8B93",
-          500: "#5C5C64",
-          700: "#2E2E34",
-          900: "#161619",
+          400: "#777A75",
+          500: "#5C5F5A",
+          700: "#2E302C",
+          900: "#171717",
         },
       },
       fontFamily: {
@@ -61,20 +55,11 @@ const config: Config = {
         ],
       },
       borderRadius: {
-        blob: "2rem",
+        blob: "1.25rem",
       },
       boxShadow: {
-        soft: "0 8px 30px rgba(22, 22, 25, 0.07)",
-        lift: "0 14px 40px rgba(15, 187, 129, 0.25)",
-      },
-      keyframes: {
-        "float-y": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" },
-        },
-      },
-      animation: {
-        "float-y": "float-y 4s ease-in-out infinite",
+        soft: "0 1px 2px rgba(23,23,23,0.04), 0 8px 24px rgba(23,23,23,0.05)",
+        lift: "0 12px 32px rgba(23,23,23,0.09)",
       },
     },
   },

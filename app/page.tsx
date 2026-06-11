@@ -1,100 +1,148 @@
+import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import { brand } from "@/data/brand";
 import { products } from "@/data/products";
 
-const values = [
+const moments = [
+  { emoji: "🪑", title: "오래 앉아 있는 날", body: "사무실, 강의실, 장거리 이동" },
+  { emoji: "👗", title: "외출, 데이트 전", body: "괜한 긴장 없이 가볍게" },
+  { emoji: "💼", title: "회의, 중요한 자리", body: "집중해야 하는 순간" },
+  { emoji: "🌙", title: "생리 전후 민감한 날", body: "몸이 예민해지는 시기" },
+];
+
+const steps = [
   {
-    emoji: "🌬️",
-    title: "활성탄소섬유가 냄새를 흡착",
-    body: "향으로 덮는 게 아니라, 활성탄소섬유(ACF)가 냄새 분자 자체를 잡아요. KTL 시험 인증 완료.",
+    no: "01",
+    title: "붙여요",
+    body: "개별 포장을 뜯어 속옷 안쪽에 가볍게 부착해요. 피부에 직접 닿지 않아요.",
   },
   {
-    emoji: "🩲",
-    title: "속옷에 붙이면 끝",
-    body: "피부가 아닌 속옷에 부착하는 방식이라 자극 걱정 없이, 1초 만에 준비 완료예요.",
+    no: "02",
+    title: "흡착해요",
+    body: "활성탄소섬유(ACF)가 향으로 덮지 않고 냄새 분자 자체를 흡착해요.",
   },
   {
-    emoji: "🪶",
-    title: "10cm의 가벼움",
-    body: "10cm × 10cm, 얇고 가벼운 개별 포장. 붙인 것도, 챙긴 것도 잊어버릴 만큼요.",
+    no: "03",
+    title: "버려요",
+    body: "하루 사용 후 떼어 버리면 끝. 10cm × 10cm, 얇고 가벼워요.",
   },
 ];
 
 export default function HomePage() {
-  const best = products.filter((p) => p.badges?.includes("BEST"));
-  const featured = (best.length >= 3 ? best : products).slice(0, 6);
+  const featured = ["pad-4plus1", "pad-monthly-30", "pad-monthly-60"]
+    .map((slug) => products.find((p) => p.slug === slug)!)
+    .filter(Boolean);
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-mint-100 blur-3xl" />
-        <div className="pointer-events-none absolute -left-16 top-40 h-64 w-64 rounded-full bg-blue-100 blur-3xl" />
-        <div className="container-md relative flex flex-col items-center py-20 text-center sm:py-28">
-          <span className="animate-float-y rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-mint-600 shadow-soft">
-            🦨 냄새 걱정은 루미어가 맡을게요
-          </span>
-          <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-ink-900 sm:text-5xl">
-            참을 수 없는 가벼움,
-            <br />
-            <span className="text-mint-500">이제 루미어 하세요</span>
-          </h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-500 sm:text-lg">
-            {brand.description}
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="/products" className="btn-primary">
-              제품 구경하기
-            </Link>
-            <Link href="/about" className="btn-ghost">
-              브랜드 이야기
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 런칭 프로모션 */}
-      <section className="container-md pb-4">
-        <div className="relative overflow-hidden rounded-blob bg-ink-900 px-7 py-8 text-white sm:px-10">
-          <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-mint-500/20" />
-          <div className="pointer-events-none absolute -bottom-16 left-1/3 h-40 w-40 rounded-full bg-blue-500/20" />
-          <div className="relative flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <span className="rounded-full bg-mint-500 px-3 py-1 text-xs font-bold">
-                🎉 {brand.promo.badge}
-              </span>
-              <p className="mt-3 text-xl font-extrabold leading-snug sm:text-2xl">
-                {brand.promo.lines[0]}
-                <br />
-                {brand.promo.lines[1]}
-              </p>
-              <p className="mt-2 text-sm text-white/60">{brand.promo.note}</p>
+      {/* 1. Hero — 제품이 바로 보이게 */}
+      <section className="border-b border-fog-300 bg-fog-100">
+        <div className="container-md grid items-center gap-10 py-16 lg:grid-cols-2 lg:py-24">
+          <div>
+            <p className="eyebrow">속옷 안쪽에 붙이는 방귀냄새 제거패드</p>
+            <h1 className="mt-4 text-4xl font-extrabold leading-[1.2] tracking-tight text-ink-900 sm:text-5xl">
+              참지 않아도 되는
+              <br />
+              하루를 만들어요
+            </h1>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-ink-500">
+              활성탄소섬유가 냄새 분자를 흡착해 일상 속 민망한 순간을 가볍게
+              줄여줘요. 국내 최초 방귀냄새 제거패드, 루미어.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/products/pad-4plus1" className="btn-primary">
+                처음이라면 4+1 스타터 보기
+              </Link>
+              <Link href="/about" className="btn-ghost">
+                루미어가 궁금하다면
+              </Link>
             </div>
-            <a
-              href={brand.smartstore}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 rounded-full bg-white px-6 py-3 font-bold text-ink-900 transition hover:-translate-y-0.5"
-            >
-              혜택 받으러 가기 →
-            </a>
+          </div>
+          <div className="relative">
+            <div className="absolute -right-8 -top-8 h-56 w-56 rounded-full bg-mint-50 blur-2xl" />
+            <div className="card relative aspect-[5/4] overflow-hidden">
+              <Image
+                src="/products/brand-pads-clean.jpg"
+                alt="루미어 방귀냄새 제거패드 패키지와 활성탄소섬유 패드"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Best products */}
-      <section className="container-md py-12">
+      {/* 2. 핵심 가치 한 줄 스트립 */}
+      <section className="container-md py-10">
+        <div className="card grid divide-y divide-fog-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          {[
+            ["활성탄소섬유가 냄새 분자 흡착", "향으로 덮지 않는 ACF 방식"],
+            ["속옷 안쪽에 간편 부착", "피부에 닿지 않아 안심"],
+            ["10cm × 10cm 패드", "얇고 가벼워 티 나지 않아요"],
+          ].map(([t, b]) => (
+            <div key={t} className="px-6 py-5">
+              <p className="text-sm font-bold text-ink-900">{t}</p>
+              <p className="mt-1 text-[13px] text-ink-400">{b}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. Problem — 루미어가 필요한 순간들 */}
+      <section className="container-md py-14">
+        <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 sm:text-[28px]">
+          루미어가 필요한 순간들
+        </h2>
+        <p className="mt-2 text-ink-400">
+          말하기 민망했던 고민, 여러분의 일상에 조용히 함께해요.
+        </p>
+        <div className="mt-7 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {moments.map((m) => (
+            <div key={m.title} className="card p-6">
+              <span className="text-2xl">{m.emoji}</span>
+              <p className="mt-3 font-bold text-ink-900">{m.title}</p>
+              <p className="mt-1 text-[13px] text-ink-400">{m.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 4. How it works */}
+      <section className="border-y border-fog-300 bg-fog-100">
+        <div className="container-md py-16">
+          <p className="eyebrow">How to use</p>
+          <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink-900 sm:text-[28px]">
+            루미어가 냄새를 없애는 방식
+          </h2>
+          <div className="mt-9 grid gap-8 sm:grid-cols-3">
+            {steps.map((s) => (
+              <div key={s.no}>
+                <p className="text-sm font-bold text-mint-600">{s.no}</p>
+                <h3 className="mt-2 text-lg font-bold text-ink-900">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-500">
+                  {s.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Best products */}
+      <section className="container-md py-16">
         <div className="flex items-end justify-between">
           <div>
-            <p className="text-sm font-bold text-mint-500">MD&apos;S PICK</p>
-            <h2 className="mt-1 text-2xl font-extrabold text-ink-900 sm:text-3xl">
-              지금 가장 사랑받는 루미어 💚
+            <p className="eyebrow">Best product</p>
+            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink-900 sm:text-[28px]">
+              많은 분들이 선택한 루미어
             </h2>
           </div>
           <Link
             href="/products"
-            className="hidden text-sm font-semibold text-ink-500 hover:text-mint-600 sm:block"
+            className="hidden text-sm font-medium text-ink-400 hover:text-ink-900 sm:block"
           >
             전체 보기 →
           </Link>
@@ -111,86 +159,54 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Brand values */}
-      <section className="container-md py-16">
-        <div className="rounded-blob bg-white p-8 shadow-soft sm:p-12">
-          <h2 className="text-center text-2xl font-extrabold text-ink-900 sm:text-3xl">
-            루미어가 냄새를 없애는 방식
+      {/* 6. Trust */}
+      <section className="container-md pb-16">
+        <div className="card px-8 py-10 sm:px-12">
+          <p className="eyebrow">Trust</p>
+          <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink-900">
+            국내 최초 방귀냄새 제거패드
           </h2>
-          <div className="mt-10 grid gap-8 sm:grid-cols-3">
-            {values.map((v) => (
-              <div key={v.title} className="text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-fog-200 text-3xl">
-                  {v.emoji}
-                </div>
-                <h3 className="mt-4 font-bold text-ink-900">{v.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-500">
-                  {v.body}
-                </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-4">
+            {[
+              ["KTL 시험 인증", "활성탄소섬유 소취 성능"],
+              ["2025 예비창업패키지", "선정 기업"],
+              ["2026 청년창업사관학교", "16기"],
+              ["전남형 청년창업사관학교", "1기"],
+            ].map(([t, b]) => (
+              <div key={t} className="border-l-2 border-mint-500 pl-4">
+                <p className="text-sm font-bold text-ink-900">{t}</p>
+                <p className="mt-0.5 text-[13px] text-ink-400">{b}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 신뢰 요소 */}
-      <section className="container-md pb-16">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="rounded-blob bg-mint-50 p-7">
-            <p className="text-sm font-bold text-mint-600">WHY LOUMEER</p>
-            <h3 className="mt-2 text-lg font-extrabold text-ink-900">
-              믿고 쓸 수 있는 이유
-            </h3>
-            <ul className="mt-4 space-y-2.5 text-sm text-ink-700">
-              {brand.trust.map((t) => (
-                <li key={t} className="flex items-start gap-2">
-                  <span className="mt-0.5 text-mint-500">✓</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-blob bg-blue-50 p-7">
-            <p className="text-sm font-bold text-blue-500">WHERE TO BUY</p>
-            <h3 className="mt-2 text-lg font-extrabold text-ink-900">
-              여기에서도 만날 수 있어요
-            </h3>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {brand.channels.map((c) => (
-                <span
-                  key={c}
-                  className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink-700 shadow-soft"
-                >
-                  {c}
-                </span>
-              ))}
-            </div>
-            <p className="mt-4 text-xs text-ink-400">
-              공식몰 인증 제품은 네이버 스마트스토어에서 구매하실 수 있어요.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Instagram CTA */}
-      <section className="container-md pb-8 pt-4">
-        <div className="relative overflow-hidden rounded-blob bg-mint-500 px-8 py-12 text-center text-white sm:py-16">
-          <div className="pointer-events-none absolute -left-10 -top-10 h-44 w-44 rounded-full bg-white/10" />
-          <div className="pointer-events-none absolute -bottom-12 -right-8 h-52 w-52 rounded-full bg-white/10" />
-          <h2 className="relative text-2xl font-extrabold sm:text-3xl">
-            루미어의 일상이 궁금하다면
+      {/* 7. CTA — 런칭 혜택 */}
+      <section className="container-md pb-20">
+        <div className="rounded-blob bg-mint-50 px-8 py-12 text-center sm:py-14">
+          <p className="text-sm font-bold text-mint-600">{brand.promo.badge}</p>
+          <h2 className="mt-3 text-2xl font-extrabold leading-snug tracking-tight text-ink-900 sm:text-3xl">
+            처음이라면 부담 없이,
+            <br />
+            4+1 스타터로 경험해보세요
           </h2>
-          <p className="relative mt-3 text-mint-100">
-            신제품 소식과 비하인드는 인스타그램에서 가장 먼저 만나요.
+          <p className="mt-3 text-sm text-ink-500">
+            {brand.promo.lines.join(" · ")} — {brand.promo.note}
           </p>
-          <a
-            href={brand.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative mt-7 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-bold text-mint-600 transition hover:-translate-y-0.5"
-          >
-            @loumeer.official 팔로우하기
-          </a>
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
+            <Link href="/products/pad-4plus1" className="btn-primary">
+              지금 바로 경험하기
+            </Link>
+            <a
+              href={brand.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
+            >
+              인스타그램 보기
+            </a>
+          </div>
         </div>
       </section>
     </>

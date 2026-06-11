@@ -3,12 +3,13 @@
  *  LOUMEER 제품 데이터 — 네이버 스마트스토어 1:1 연동 (실데이터)
  *  출처: smartstore.naver.com/loumeerkorea (2026-06-11 기준)
  * ─────────────────────────────────────────────────────────────
- *  스마트스토어의 8개 리스팅을 4개 제품 + 구성 옵션으로 매핑:
+ *  스마트스토어 8개 리스팅 매핑:
  *  - 4+1 스타터 ×1~×5세트  → 12497890371~12497890375
  *  - 먼슬리 플랜 30개입     → 12843310687
  *  - 먼슬리 플랜 60개입     → 12843347068
  *  - 풉캐스트 콜라보 4+1    → 13381194728
- *  각 옵션의 naverUrl이 해당 스마트스토어 리스팅으로 연결됩니다.
+ *  구매 동선: 추천 구성(처음/매일/절약) 3개를 메인으로, 수량 추가
+ *  구성(2~5세트)은 moreOptions로 조용히 노출.
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -19,10 +20,11 @@ export interface DetailSection {
 }
 
 export interface PurchaseOption {
+  tag?: string; // "처음 써보는 분께 추천" 등
   label: string;
   price: number;
   originalPrice?: number;
-  perUnit?: string; // "1개당 2,125원"
+  perUnit?: string;
   naverUrl: string;
 }
 
@@ -34,13 +36,14 @@ export interface Product {
   originalPrice?: number;
   images: string[];
   category: string;
-  badges?: ("BEST" | "NEW" | "품절임박")[];
-  naverUrl: string; // 대표 리스팅 (기본 구매 버튼)
-  purchaseOptions?: PurchaseOption[]; // 구성별 가격·링크
+  badges?: string[]; // 카드 상단 작은 텍스트 라벨 (BEST, SET 등)
+  naverUrl: string;
+  purchaseOptions?: PurchaseOption[];
+  moreOptions?: PurchaseOption[]; // 추가 수량 구성 (조용히 노출)
   reviewCount?: number;
   reviewScore?: number;
   detail: DetailSection[];
-  detailImages?: string[]; // 스마트스토어 상세페이지 원본 이미지 (CDN)
+  detailImages?: string[];
   soldOut?: boolean;
 }
 
@@ -49,7 +52,54 @@ export const categories = ["전체", "스타터", "먼슬리 플랜", "콜라보
 const store = "https://smartstore.naver.com/loumeerkorea/products/";
 const cdn = "https://shop-phinf.pstatic.net/";
 
-/** 두 제품군이 공유하는 브랜드 상세 이미지 시퀀스 */
+/** 추천 구성 3종 — 모든 상세 페이지에서 공유 */
+const recommendedOptions: PurchaseOption[] = [
+  {
+    tag: "처음 써보는 분께 추천",
+    label: "4개입 × 1세트 + 1개 증정",
+    price: 8500,
+    originalPrice: 15000,
+    perUnit: "1개당 2,125원",
+    naverUrl: store + "12497890371",
+  },
+  {
+    tag: "매일 관리용",
+    label: "30개입 먼슬리 플랜",
+    price: 47900,
+    originalPrice: 117500,
+    perUnit: "1개당 1,597원",
+    naverUrl: store + "12843310687",
+  },
+  {
+    tag: "가장 경제적인 구성",
+    label: "60개입 먼슬리 플랜",
+    price: 89900,
+    originalPrice: 225000,
+    perUnit: "1개당 1,498원 · 최저단가",
+    naverUrl: store + "12843347068",
+  },
+];
+
+/** 4+1 스타터의 수량 추가 구성 (스마트스토어 리스팅 1:1) */
+const starterMoreOptions: PurchaseOption[] = [
+  { label: "4개입 × 2세트", price: 16800, originalPrice: 30000, perUnit: "1개당 2,100원", naverUrl: store + "12497890372" },
+  { label: "4개입 × 3세트", price: 24900, originalPrice: 45000, perUnit: "1개당 2,075원", naverUrl: store + "12497890373" },
+  { label: "4개입 × 4세트", price: 32800, originalPrice: 60000, perUnit: "1개당 2,050원", naverUrl: store + "12497890374" },
+  { label: "4개입 × 5세트", price: 40500, originalPrice: 75000, perUnit: "1개당 2,025원", naverUrl: store + "12497890375" },
+];
+
+const howTo: DetailSection[] = [
+  {
+    heading: "속옷 안쪽에 붙이면 끝",
+    body: "루미어는 피부에 직접 붙이는 제품이 아니에요. 속옷 안쪽에 가볍게 부착해 일상 속 냄새 고민을 조용히 줄여줍니다.",
+    image: "/products/brand-pads-clean.jpg",
+  },
+  {
+    heading: "향으로 덮지 않고, 흡착으로 줄입니다",
+    body: "활성탄소섬유(ACF)가 냄새 분자 자체를 흡착해요. 10cm × 10cm, 얇고 가벼워서 붙인 걸 잊어버릴 정도예요. 하루 사용 후 떼어 버리면 끝.",
+  },
+];
+
 const commonDetailImages = [
   cdn + "20251031_157/1761875824729t9og4_JPEG/%ED%9B%84%ED%82%B9.jpg",
   cdn + "20251031_140/1761875785348acPqI_GIF/2.gif",
@@ -67,42 +117,32 @@ const commonDetailImages = [
   cdn + "20251031_164/1761875785556y3Tgx_JPEG/14.jpg",
 ];
 
-const howTo: DetailSection[] = [
-  {
-    heading: "쓰는 법은 1초면 충분해요",
-    body: "① 개별 포장을 뜯고 ② 속옷 안쪽에 붙인 뒤 ③ 하루를 마치면 떼서 버리세요. 활성탄소섬유가 냄새 분자를 흡착해서, 참지 않아도 티 나지 않아요.",
-  },
-  {
-    heading: "피부에 닿지 않게, 부담 없이",
-    body: "피부가 아닌 속옷에 부착하는 방식이라 자극 걱정이 없어요. 10cm × 10cm, 얇고 가벼워서 붙인 걸 잊어버릴 정도예요.",
-    image: "/products/brand-pads.jpg",
-  },
+const monthlyDetailImages = [
+  cdn + "20251222_118/1766367147274VQdwA_PNG/1.png",
+  cdn + "20251222_35/1766367147421bGXfS_PNG/2.png",
+  cdn + "20251222_185/1766367147368nYp5m_PNG/3.png",
+  ...commonDetailImages,
 ];
 
 export const products: Product[] = [
   {
     slug: "pad-4plus1",
     name: "루미어 방귀냄새 제거패드 4+1 (4개입)",
-    shortDescription: "처음이라면 부담 없이, 4+1 스타터",
+    shortDescription: "처음이라면 부담 없이 시작하는 구성",
     price: 8500,
     originalPrice: 15000,
-    images: ["/products/brand-pads.jpg", "/products/poopcast.jpg"],
+    images: ["/products/brand-pads-clean.jpg", "/products/pad-30-clean.jpg"],
     category: "스타터",
     badges: ["BEST"],
     naverUrl: store + "12497890371",
     reviewCount: 75,
     reviewScore: 4.53,
-    purchaseOptions: [
-      { label: "4개입 × 1세트", price: 8500, originalPrice: 15000, perUnit: "1개당 2,125원", naverUrl: store + "12497890371" },
-      { label: "4개입 × 2세트", price: 16800, originalPrice: 30000, perUnit: "1개당 2,100원", naverUrl: store + "12497890372" },
-      { label: "4개입 × 3세트", price: 24900, originalPrice: 45000, perUnit: "1개당 2,075원", naverUrl: store + "12497890373" },
-      { label: "4개입 × 4세트", price: 32800, originalPrice: 60000, perUnit: "1개당 2,050원", naverUrl: store + "12497890374" },
-      { label: "4개입 × 5세트", price: 40500, originalPrice: 75000, perUnit: "1개당 2,025원", naverUrl: store + "12497890375" },
-    ],
+    purchaseOptions: recommendedOptions,
+    moreOptions: starterMoreOptions,
     detail: [
       {
         heading: "루미어가 처음이신가요?",
-        body: "효과가 궁금하다면 4+1 구성으로 가볍게 시작해보세요. 과민성대장증후군, 가스실금으로 고민하는 분들이 가장 먼저 찾는 구성이에요. 10cm × 10cm 패드 4개입 + 1개 추가 증정.",
+        body: "효과가 궁금하다면 4+1 구성으로 가볍게 시작해보세요. 과민성대장증후군, 가스실금으로 고민하는 분들이 가장 먼저 찾는 구성이에요. 10cm × 10cm 패드 4개입에 1개를 더 드려요.",
       },
       ...howTo,
     ],
@@ -114,18 +154,15 @@ export const products: Product[] = [
   {
     slug: "pad-monthly-30",
     name: "루미어 방귀냄새 제거패드 먼슬리 플랜 30개입",
-    shortDescription: "한 달의 쾌적함, 매일 1개 먼슬리 플랜",
+    shortDescription: "매일 관리에 적합한 구성",
     price: 47900,
     originalPrice: 117500,
-    images: ["/products/pad-30.jpg", "/products/brand-pads.jpg"],
+    images: ["/products/pad-30-clean.jpg", "/products/brand-pads-clean.jpg"],
     category: "먼슬리 플랜",
     naverUrl: store + "12843310687",
     reviewCount: 11,
     reviewScore: 4.64,
-    purchaseOptions: [
-      { label: "30개입 × 1박스", price: 47900, originalPrice: 117500, perUnit: "1개당 1,597원", naverUrl: store + "12843310687" },
-      { label: "60개입이 더 저렴해요 →", price: 89900, originalPrice: 225000, perUnit: "1개당 1,498원", naverUrl: store + "12843347068" },
-    ],
+    purchaseOptions: recommendedOptions,
     detail: [
       {
         heading: "매일 쓰는 분들을 위한 한 달 구성",
@@ -133,56 +170,48 @@ export const products: Product[] = [
       },
       ...howTo,
     ],
-    detailImages: [
-      cdn + "20251222_118/1766367147274VQdwA_PNG/1.png",
-      cdn + "20251222_35/1766367147421bGXfS_PNG/2.png",
-      cdn + "20251222_185/1766367147368nYp5m_PNG/3.png",
-      ...commonDetailImages,
-    ],
+    detailImages: monthlyDetailImages,
   },
   {
     slug: "pad-monthly-60",
     name: "루미어 방귀냄새 제거패드 먼슬리 플랜 60개입",
-    shortDescription: "최저 단가, 두 달의 여유 60개입",
+    shortDescription: "가장 경제적인 대용량 구성",
     price: 89900,
     originalPrice: 225000,
-    images: ["/products/pad-60.jpg", "/products/brand-pads.jpg"],
+    images: ["/products/pad-60-clean.jpg", "/products/brand-pads-clean.jpg"],
     category: "먼슬리 플랜",
     badges: ["BEST"],
     naverUrl: store + "12843347068",
     reviewCount: 11,
     reviewScore: 4.64,
-    purchaseOptions: [
-      { label: "60개입 × 1박스", price: 89900, originalPrice: 225000, perUnit: "1개당 1,498원 · 최저단가", naverUrl: store + "12843347068" },
-      { label: "가볍게 30개입부터 →", price: 47900, originalPrice: 117500, perUnit: "1개당 1,597원", naverUrl: store + "12843310687" },
-    ],
+    purchaseOptions: recommendedOptions,
     detail: [
       {
         heading: "이미 써본 분들이 다시 찾는 구성",
-        body: "1개당 1,498원, 루미어 최저 단가예요. 리뷰 평점 5.0 — 효과를 아는 분들의 선택입니다.",
+        body: "1개당 1,498원, 루미어 최저 단가예요. 두 달의 여유를 한 번에 챙기세요.",
       },
       ...howTo,
     ],
-    detailImages: [
-      cdn + "20251222_118/1766367147274VQdwA_PNG/1.png",
-      cdn + "20251222_35/1766367147421bGXfS_PNG/2.png",
-      cdn + "20251222_185/1766367147368nYp5m_PNG/3.png",
-      ...commonDetailImages,
-    ],
+    detailImages: monthlyDetailImages,
   },
   {
     slug: "pad-poopcast",
     name: "[풉캐스트 전용] 루미어 방귀냄새 제거패드 4+1",
     shortDescription: "루미어 × POOPCAST 콜라보 에디션",
     price: 15000,
-    images: ["/products/poopcast.jpg", "/products/brand-pads.jpg"],
+    images: ["/products/poopcast.jpg", "/products/brand-pads-clean.jpg"],
     category: "콜라보",
-    badges: ["NEW"],
+    badges: ["LIMITED"],
     naverUrl: store + "13381194728",
     reviewCount: 1,
     reviewScore: 5.0,
     purchaseOptions: [
-      { label: "콜라보 에디션 4개입 + 1", price: 15000, naverUrl: store + "13381194728" },
+      {
+        tag: "한정 콜라보 에디션",
+        label: "콜라보 패키지 4개입 + 1개 증정",
+        price: 15000,
+        naverUrl: store + "13381194728",
+      },
     ],
     detail: [
       {

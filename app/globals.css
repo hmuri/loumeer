@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  @apply bg-fog-100 text-ink-700 antialiased;
+  @apply bg-fog-50 text-ink-700 antialiased;
   letter-spacing: -0.01em;
 }
 
@@ -18,9 +18,15 @@ body {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-mint-500 px-7 py-3.5 font-semibold text-white shadow-lift transition hover:-translate-y-0.5 hover:bg-mint-600 active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-mint-500 px-6 py-3 text-[15px] font-semibold text-white transition hover:bg-mint-600;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-mint-200 bg-white px-7 py-3.5 font-semibold text-mint-600 transition hover:border-mint-400 hover:bg-mint-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-fog-300 bg-white px-6 py-3 text-[15px] font-semibold text-ink-700 transition hover:border-ink-400;
+  }
+  .card {
+    @apply rounded-blob border border-fog-300 bg-white;
+  }
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.14em] text-mint-600;
   }
 }
