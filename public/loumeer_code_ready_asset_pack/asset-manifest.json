@@ -1,0 +1,159 @@
+{
+  "home": {
+    "hero": {
+      "rightImage": "home/hero/hero-product-main.png",
+      "featureIcons": [
+        {
+          "label": "향으로 덮지 않아요",
+          "file_png": "home/hero/icon-odor-absorption.png",
+          "file_svg": "home/hero/icon-odor-absorption.svg"
+        },
+        {
+          "label": "속옷 안쪽에 가볍게",
+          "file_png": "home/hero/icon-underwear-attach.png",
+          "file_svg": "home/hero/icon-underwear-attach.svg"
+        },
+        {
+          "label": "10cm × 10cm 초경량 패드",
+          "file_png": "home/hero/icon-lightweight-pad.png",
+          "file_svg": "home/hero/icon-lightweight-pad.svg"
+        }
+      ]
+    },
+    "useMoments": [
+      {
+        "title": "출근 전",
+        "icon_png": "home/use-moments/icon-commute-before.png",
+        "icon_svg": "home/use-moments/icon-commute-before.svg",
+        "image": "home/use-moments/image-commute-before.png"
+      },
+      {
+        "title": "오래 앉아 있는 날",
+        "icon_png": "home/use-moments/icon-long-sitting.png",
+        "icon_svg": "home/use-moments/icon-long-sitting.svg",
+        "image": "home/use-moments/image-long-sitting.png"
+      },
+      {
+        "title": "중요한 약속 전",
+        "icon_png": "home/use-moments/icon-important-appointment.png",
+        "icon_svg": "home/use-moments/icon-important-appointment.svg",
+        "image": "home/use-moments/image-important-appointment.png"
+      },
+      {
+        "title": "예민한 날",
+        "icon_png": "home/use-moments/icon-sensitive-day.png",
+        "icon_svg": "home/use-moments/icon-sensitive-day.svg",
+        "image": "home/use-moments/image-sensitive-day.png"
+      }
+    ],
+    "bestProducts": [
+      {
+        "title": "4+1 스타터",
+        "image": "home/products/image-starter.png"
+      },
+      {
+        "title": "30개입 플랜",
+        "image": "home/products/image-plan-30.png"
+      },
+      {
+        "title": "60개입 플랜",
+        "image": "home/products/image-plan-60.png"
+      }
+    ],
+    "trust": [
+      {
+        "label": "국내 최초 방귀냄새 제거패드",
+        "icon_png": "home/trust/icon-first-in-category.png",
+        "icon_svg": "home/trust/icon-first-in-category.svg"
+      },
+      {
+        "label": "활성탄소섬유 ACF",
+        "icon_png": "home/trust/icon-acf-material.png",
+        "icon_svg": "home/trust/icon-acf-material.svg"
+      },
+      {
+        "label": "KTL 시험 인증 완료",
+        "icon_png": "home/trust/icon-ktl-verified.png",
+        "icon_svg": "home/trust/icon-ktl-verified.svg"
+      },
+      {
+        "label": "청년창업사관학교 선정",
+        "icon_png": "home/trust/icon-selected-brand.png",
+        "icon_svg": "home/trust/icon-selected-brand.svg"
+      }
+    ],
+    "ctaBannerImage": "home/cta/image-starter-banner.png"
+  },
+  "detail": {
+    "product": {
+      "mainImage": "detail/product/image-main-hero.png",
+      "thumbnails": [
+        "detail/product/image-starter-thumbnail.png",
+        "detail/product/image-plan-30-thumbnail.png",
+        "detail/product/image-plan-60-thumbnail.png"
+      ],
+      "supportBannerImage": "detail/product/image-support-banner.png"
+    },
+    "howItWorks": [
+      {
+        "step": 1,
+        "label": "뜯고",
+        "icon_png": "detail/how-it-works/icon-step-01-open-pack.png",
+        "icon_svg": "detail/how-it-works/icon-step-01-open-pack.svg"
+      },
+      {
+        "step": 2,
+        "label": "붙이고",
+        "icon_png": "detail/how-it-works/icon-step-02-attach-inside-underwear.png",
+        "icon_svg": "detail/how-it-works/icon-step-02-attach-inside-underwear.svg"
+      },
+      {
+        "step": 3,
+        "label": "버리면 끝",
+        "icon_png": "detail/how-it-works/icon-step-03-dispose.png",
+        "icon_svg": "detail/how-it-works/icon-step-03-dispose.svg"
+      }
+    ],
+    "recommendedMoments": "detail/use-moments/*",
+    "trust": "detail/trust/*"
+  },
+  "story": {
+    "heroImage": "story/hero/image-story-hero.png",
+    "pillars": [
+      {
+        "label": "누구나 겪지만 쉽게 말하지 못한 고민",
+        "icon_png": "story/pillars/icon-problem.png",
+        "icon_svg": "story/pillars/icon-problem.svg"
+      },
+      {
+        "label": "향수가 아니라 과학으로 해결하는 방식",
+        "icon_png": "story/pillars/icon-science.png",
+        "icon_svg": "story/pillars/icon-science.svg"
+      },
+      {
+        "label": "민망함을 덜어주는 작은 실용적인 솔루션",
+        "icon_png": "story/pillars/icon-practical.png",
+        "icon_svg": "story/pillars/icon-practical.svg"
+      }
+    ],
+    "milestonesImage": "story/milestones/image-soft-product-stilllife.png",
+    "whyLoumeer": [
+      {
+        "label": "조용한 자신감",
+        "icon_png": "story/why-loumeer/icon-quiet-confidence.png",
+        "icon_svg": "story/why-loumeer/icon-quiet-confidence.svg"
+      },
+      {
+        "label": "가벼운 사용감",
+        "icon_png": "story/why-loumeer/icon-lightweight-daily-use.png",
+        "icon_svg": "story/why-loumeer/icon-lightweight-daily-use.svg"
+      },
+      {
+        "label": "믿을 수 있는 검증",
+        "icon_png": "story/why-loumeer/icon-why-verified-badge.png",
+        "icon_svg": "story/why-loumeer/icon-why-verified-badge.svg"
+      }
+    ],
+    "ctaDecoration": "story/cta/image-plant-decoration.png"
+  }
+}

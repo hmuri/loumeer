@@ -1,0 +1,38 @@
+page,section,ui_label,file_path
+home,hero,right image,home/hero/hero-product-main.png
+home,hero,향으로 덮지 않아요,home/hero/icon-odor-absorption.png
+home,hero,속옷 안쪽에 가볍게,home/hero/icon-underwear-attach.png
+home,hero,10cm × 10cm 초경량 패드,home/hero/icon-lightweight-pad.png
+home,use-moments,출근 전 icon,home/use-moments/icon-commute-before.png
+home,use-moments,출근 전 image,home/use-moments/image-commute-before.png
+home,use-moments,오래 앉아 있는 날 icon,home/use-moments/icon-long-sitting.png
+home,use-moments,오래 앉아 있는 날 image,home/use-moments/image-long-sitting.png
+home,use-moments,중요한 약속 전 icon,home/use-moments/icon-important-appointment.png
+home,use-moments,중요한 약속 전 image,home/use-moments/image-important-appointment.png
+home,use-moments,예민한 날 icon,home/use-moments/icon-sensitive-day.png
+home,use-moments,예민한 날 image,home/use-moments/image-sensitive-day.png
+home,products,4+1 스타터,home/products/image-starter.png
+home,products,30개입 플랜,home/products/image-plan-30.png
+home,products,60개입 플랜,home/products/image-plan-60.png
+home,trust,국내 최초 방귀냄새 제거패드,home/trust/icon-first-in-category.png
+home,trust,활성탄소섬유 ACF,home/trust/icon-acf-material.png
+home,trust,KTL 시험 인증 완료,home/trust/icon-ktl-verified.png
+home,trust,청년창업사관학교 선정,home/trust/icon-selected-brand.png
+home,cta,starter banner image,home/cta/image-starter-banner.png
+detail,product,main hero,detail/product/image-main-hero.png
+detail,product,starter thumbnail,detail/product/image-starter-thumbnail.png
+detail,product,30개입 thumbnail,detail/product/image-plan-30-thumbnail.png
+detail,product,60개입 thumbnail,detail/product/image-plan-60-thumbnail.png
+detail,how-it-works,01 뜯고,detail/how-it-works/icon-step-01-open-pack.png
+detail,how-it-works,02 붙이고,detail/how-it-works/icon-step-02-attach-inside-underwear.png
+detail,how-it-works,03 버리면 끝,detail/how-it-works/icon-step-03-dispose.png
+detail,product,support banner image,detail/product/image-support-banner.png
+story,hero,story hero,story/hero/image-story-hero.png
+story,pillars,problem icon,story/pillars/icon-problem.png
+story,pillars,science icon,story/pillars/icon-science.png
+story,pillars,practical icon,story/pillars/icon-practical.png
+story,milestones,soft product stilllife,story/milestones/image-soft-product-stilllife.png
+story,why-loumeer,조용한 자신감,story/why-loumeer/icon-quiet-confidence.png
+story,why-loumeer,가벼운 사용감,story/why-loumeer/icon-lightweight-daily-use.png
+story,why-loumeer,믿을 수 있는 검증,story/why-loumeer/icon-why-verified-badge.png
+story,cta,plant decoration,story/cta/image-plant-decoration.png

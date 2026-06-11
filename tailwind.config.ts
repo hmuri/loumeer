@@ -16,11 +16,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        /* design-tokens.json: background #F7F8F5, line #E5E7E2 */
         fog: {
-          50: "#FAFAF7",
-          100: "#F7F8F5",
-          200: "#EFEFEA",
-          300: "#E9E9E4",
+          50: "#F7F8F5",
+          100: "#F1F2EE",
+          200: "#EBECE7",
+          300: "#E5E7E2",
         },
         /* 브랜드 그린 #00A878 — 제작 에셋(loumeer_hero_assets) 기준 */
         mint: {
@@ -37,9 +38,10 @@ const config: Config = {
           50: "#EDF2FB",
           500: "#3B5BDB",
         },
+        /* design-tokens.json: text_primary #171717, text_secondary #6B6F6A */
         ink: {
-          400: "#777A75",
-          500: "#5C5F5A",
+          400: "#6B6F6A",
+          500: "#565A55",
           700: "#2E302C",
           900: "#171717",
         },

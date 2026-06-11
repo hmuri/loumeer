@@ -2,32 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/data/products";
 import { siteImages } from "@/data/images";
-import {
-  AwardIcon,
-  BriefsIcon,
-  BuildingIcon,
-  CalendarIcon,
-  LeafIcon,
-  PackageIcon,
-  ShieldIcon,
-  SparkleIcon,
-  SunIcon,
-  TrashIcon,
-} from "@/components/icons";
 
 const heroValues = [
   {
-    icon: "/loumeer_hero_assets/icon_absorption_leaf.svg",
+    icon: siteImages.heroIcons.absorption,
     title: "향으로 덮지 않아요",
     body: "활성탄소섬유 기반 흡착 케어",
   },
   {
-    icon: "/loumeer_hero_assets/icon_underwear_pad.svg",
+    icon: siteImages.heroIcons.attach,
     title: "속옷 안쪽에 가볍게",
     body: "피부에 직접 붙이지 않는 방식",
   },
   {
-    icon: "/loumeer_hero_assets/icon_light_pad_square.svg",
+    icon: siteImages.heroIcons.lightweight,
     title: "10cm × 10cm 초경량 패드",
     body: "작고 가벼운 일회용 설계",
   },
@@ -35,49 +23,49 @@ const heroValues = [
 
 const moments = [
   {
-    Icon: SunIcon,
+    icon: siteImages.moments.commute.icon,
     title: "출근 전",
     body: "하루를 산뜻하게 시작하고 싶을 때",
-    image: siteImages.momentCommute,
+    image: siteImages.moments.commute.image,
   },
   {
-    Icon: BriefsIcon,
+    icon: siteImages.moments.sitting.icon,
     title: "오래 앉아 있는 날",
     body: "장시간 앉아 있어도 쾌적함을 유지하고 싶을 때",
-    image: siteImages.momentSitting,
+    image: siteImages.moments.sitting.image,
   },
   {
-    Icon: CalendarIcon,
+    icon: siteImages.moments.promise.icon,
     title: "중요한 약속 전",
     body: "자신감 있게, 불편함 없이 지내고 싶을 때",
-    image: siteImages.momentPromise,
+    image: siteImages.moments.promise.image,
   },
   {
-    Icon: SparkleIcon,
+    icon: siteImages.moments.sensitive.icon,
     title: "예민한 날",
     body: "컨디션이 예민해 더 신경 쓰이는 날",
-    image: siteImages.momentSensitive,
+    image: siteImages.moments.sensitive.image,
   },
 ];
 
 const trust = [
   {
-    Icon: AwardIcon,
+    icon: siteImages.trustIcons.first,
     title: "국내 최초 방귀냄새 제거패드",
     body: "처음을 향이 아닌 기술로 잡아냈습니다.",
   },
   {
-    Icon: LeafIcon,
+    icon: siteImages.trustIcons.acf,
     title: "활성탄소섬유 ACF",
     body: "흡착·탈취 성능이 검증된 프리미엄 소재를 사용합니다.",
   },
   {
-    Icon: ShieldIcon,
+    icon: siteImages.trustIcons.ktl,
     title: "KTL 시험 인증 완료",
     body: "공신력 있는 기관의 성능 시험을 통과했습니다.",
   },
   {
-    Icon: BuildingIcon,
+    icon: siteImages.trustIcons.selected,
     title: "청년창업사관학교 선정",
     body: "혁신성과 성장 가능성을 인정받은 브랜드입니다.",
   },
@@ -85,24 +73,31 @@ const trust = [
 
 const steps = [
   {
-    Icon: PackageIcon,
+    icon: siteImages.detail.steps[0],
     no: "01",
     title: "뜯고",
     body: "개별 포장을 뜯어요.",
   },
   {
-    Icon: BriefsIcon,
+    icon: siteImages.detail.steps[1],
     no: "02",
     title: "붙이고",
     body: "속옷 안쪽에 붙여요. 피부에 직접 붙이지 않아요.",
   },
   {
-    Icon: TrashIcon,
+    icon: siteImages.detail.steps[2],
     no: "03",
     title: "버리면 끝",
     body: "하루 사용 후 떼어 버리면 끝이에요.",
   },
 ];
+
+/** 홈 제품 카드 이미지 (에셋 팩) */
+const productImages: Record<string, string> = {
+  "pad-4plus1": siteImages.products.starter,
+  "pad-monthly-30": siteImages.products.plan30,
+  "pad-monthly-60": siteImages.products.plan60,
+};
 
 export default function HomePage() {
   const featured = ["pad-4plus1", "pad-monthly-30", "pad-monthly-60"]
@@ -182,14 +177,20 @@ export default function HomePage() {
             루미어가 필요한 순간
           </h2>
           <div className="mt-7 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
-            {moments.map(({ Icon, title, body, image }) => (
+            {moments.map(({ icon, title, body, image }) => (
               <article
                 key={title}
                 className="flex flex-col overflow-hidden rounded-2xl border border-fog-200 bg-white"
               >
                 <div className="flex-1 p-5">
                   <div className="flex items-center gap-2.5">
-                    <Icon className="h-6 w-6 shrink-0 text-mint-700" />
+                    <Image
+                      src={icon}
+                      alt=""
+                      width={34}
+                      height={34}
+                      className="h-[34px] w-[34px] shrink-0"
+                    />
                     <h3 className="font-extrabold text-ink-900">{title}</h3>
                   </div>
                   <p className="mt-2 text-[13px] leading-relaxed text-ink-500">
@@ -249,13 +250,13 @@ export default function HomePage() {
                   <p className="mx-auto mt-2 min-h-[40px] max-w-[190px] text-[13px] leading-relaxed text-ink-500">
                     {product.shortDescription}
                   </p>
-                  <div className="relative mt-5 aspect-square overflow-hidden rounded-2xl bg-white">
+                  <div className="mt-6 flex h-32 items-center justify-center">
                     <Image
-                      src={product.images[0]}
+                      src={productImages[product.slug] ?? product.images[0]}
                       alt={product.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 28vw"
-                      className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                      width={92}
+                      height={86}
+                      className="h-28 w-auto object-contain transition duration-500 group-hover:scale-105"
                     />
                   </div>
                   <div className="mt-auto border-t border-fog-200 pt-4">
@@ -285,9 +286,15 @@ export default function HomePage() {
               </p>
             </div>
             <div className="grid gap-0 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-fog-300">
-              {trust.map(({ Icon, title, body }) => (
+              {trust.map(({ icon, title, body }) => (
                 <div key={title} className="px-2 py-5 text-center lg:px-7">
-                  <Icon className="mx-auto h-9 w-9 text-mint-700" />
+                  <Image
+                    src={icon}
+                    alt=""
+                    width={52}
+                    height={52}
+                    className="mx-auto h-[52px] w-[52px]"
+                  />
                   <p className="mt-4 text-sm font-extrabold leading-snug text-ink-900">
                     {title}
                   </p>
@@ -316,7 +323,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid gap-3">
-            {steps.map(({ Icon, no, title, body }) => (
+            {steps.map(({ icon, no, title, body }) => (
               <div
                 key={no}
                 className="flex items-center gap-5 rounded-2xl border border-fog-300 bg-white px-6 py-5 shadow-soft"
@@ -324,7 +331,13 @@ export default function HomePage() {
                 <span className="text-sm font-extrabold text-mint-700">
                   {no}
                 </span>
-                <Icon className="h-8 w-8 shrink-0 text-ink-500" />
+                <Image
+                  src={icon}
+                  alt=""
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 shrink-0"
+                />
                 <div>
                   <p className="font-extrabold text-ink-900">{title}</p>
                   <p className="mt-1 text-[13px] leading-relaxed text-ink-500">
@@ -355,13 +368,13 @@ export default function HomePage() {
               네이버스토어에서 구매하기 ↗
             </a>
           </div>
-          <div className="relative min-h-[260px] lg:min-h-[340px]">
+          <div className="hidden items-center justify-center px-10 py-8 lg:flex">
             <Image
               src={siteImages.cta}
               alt="루미어 4+1 스타터 구성"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-center mix-blend-multiply"
+              width={416}
+              height={107}
+              className="w-full max-w-[440px]"
             />
           </div>
         </div>

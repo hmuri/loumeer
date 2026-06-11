@@ -10,19 +10,6 @@ import {
   getProduct,
   products,
 } from "@/data/products";
-import {
-  PackageIcon,
-  BriefsIcon,
-  TrashIcon,
-  SunIcon,
-  ChairIcon,
-  CalendarIcon,
-  SparkleIcon,
-  ShieldIcon,
-  AwardIcon,
-  LeafIcon,
-  PadIcon,
-} from "@/components/icons";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -42,23 +29,23 @@ export function generateMetadata({
 }
 
 const steps = [
-  { Icon: PackageIcon, no: "01", title: "뜯고", body: "개별 포장을 뜯어요." },
-  { Icon: BriefsIcon, no: "02", title: "붙이고", body: "속옷 안쪽에 붙여요. 피부에 닿지 않아요." },
-  { Icon: TrashIcon, no: "03", title: "버리면 끝", body: "하루 사용 후 떼어 버리면 끝!" },
+  { icon: siteImages.detail.steps[0], no: "01", title: "뜯고", body: "개별 포장을 뜯어요." },
+  { icon: siteImages.detail.steps[1], no: "02", title: "붙이고", body: "속옷 안쪽에 붙여요. 피부에 닿지 않아요." },
+  { icon: siteImages.detail.steps[2], no: "03", title: "버리면 끝", body: "하루 사용 후 떼어 버리면 끝!" },
 ];
 
 const moments = [
-  { Icon: SunIcon, title: "출근 전", body: "하루를 산뜻하게 시작하고 싶을 때" },
-  { Icon: ChairIcon, title: "오래 앉아 있는 날", body: "장시간 착용에도 쾌적함을 유지하고 싶을 때" },
-  { Icon: CalendarIcon, title: "중요한 약속 전", body: "자신감을 갖고 불편함 없이 지내고 싶을 때" },
-  { Icon: SparkleIcon, title: "예민한 날", body: "컨디션이 예민할 때 더 신경 쓰일 때" },
+  { icon: siteImages.moments.commute.icon, title: "출근 전", body: "하루를 산뜻하게 시작하고 싶을 때" },
+  { icon: siteImages.moments.sitting.icon, title: "오래 앉아 있는 날", body: "장시간 착용에도 쾌적함을 유지하고 싶을 때" },
+  { icon: siteImages.moments.promise.icon, title: "중요한 약속 전", body: "자신감을 갖고 불편함 없이 지내고 싶을 때" },
+  { icon: siteImages.moments.sensitive.icon, title: "예민한 날", body: "컨디션이 예민할 때 더 신경 쓰일 때" },
 ];
 
 const trust = [
-  { Icon: ShieldIcon, title: "KTL 시험 인증 완료", body: "공식 인증으로 검증된 성능 시험 통과" },
-  { Icon: AwardIcon, title: "국내 최초 방귀냄새 제거패드", body: "차별화된 아이디어와 기술력으로 시작된 제품" },
-  { Icon: LeafIcon, title: "활성탄소섬유 ACF", body: "흡착력이 뛰어난 검증된 프리미엄 소재 사용" },
-  { Icon: PadIcon, title: "엄선한 원자재 사용", body: "안전성을 고려해 엄선된 원자재 사용" },
+  { icon: siteImages.trustIcons.ktl, title: "KTL 시험 인증 완료", body: "공식 인증으로 검증된 성능 시험 통과" },
+  { icon: siteImages.trustIcons.first, title: "국내 최초 방귀냄새 제거패드", body: "차별화된 아이디어와 기술력으로 시작된 제품" },
+  { icon: siteImages.trustIcons.acf, title: "활성탄소섬유 ACF", body: "흡착력이 뛰어난 검증된 프리미엄 소재 사용" },
+  { icon: siteImages.trustIcons.selected, title: "엄선한 원자재 사용", body: "안전성을 고려해 엄선된 원자재 사용" },
 ];
 
 export default function ProductDetailPage({
@@ -217,10 +204,16 @@ export default function ProductDetailPage({
             루미어는 이렇게 사용해요
           </h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {steps.map(({ Icon, no, title, body }) => (
+            {steps.map(({ icon, no, title, body }) => (
               <div key={no} className="card flex items-center gap-5 px-6 py-6">
                 <span className="text-sm font-bold text-mint-600">{no}</span>
-                <Icon className="h-9 w-9 shrink-0 text-ink-500" />
+                <Image
+                  src={icon}
+                  alt=""
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 shrink-0"
+                />
                 <div>
                   <p className="font-bold text-ink-900">{title}</p>
                   <p className="mt-0.5 text-[13px] leading-snug text-ink-400">
@@ -269,10 +262,16 @@ export default function ProductDetailPage({
           이런 날 추천해요
         </h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {moments.map(({ Icon, title, body }) => (
+          {moments.map(({ icon, title, body }) => (
             <div key={title} className="card p-5">
               <div className="flex items-center gap-2.5">
-                <Icon className="h-5 w-5 text-mint-600" />
+                <Image
+                  src={icon}
+                  alt=""
+                  width={34}
+                  height={34}
+                  className="h-[34px] w-[34px] shrink-0"
+                />
                 <p className="font-bold text-ink-900">{title}</p>
               </div>
               <p className="mt-2 text-[13px] leading-relaxed text-ink-400">
@@ -286,9 +285,15 @@ export default function ProductDetailPage({
       {/* 안심 근거 */}
       <section className="mt-12">
         <div className="card grid gap-7 px-8 py-8 sm:grid-cols-2 lg:grid-cols-4">
-          {trust.map(({ Icon, title, body }) => (
+          {trust.map(({ icon, title, body }) => (
             <div key={title} className="flex items-start gap-3.5">
-              <Icon className="h-7 w-7 shrink-0 text-mint-600" />
+              <Image
+                src={icon}
+                alt=""
+                width={44}
+                height={44}
+                className="h-11 w-11 shrink-0"
+              />
               <div>
                 <p className="text-sm font-bold leading-snug text-ink-900">
                   {title}

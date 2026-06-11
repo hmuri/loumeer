@@ -3,14 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { brand } from "@/data/brand";
 import { siteImages } from "@/data/images";
-import {
-  LeafIcon,
-  FlaskIcon,
-  BriefsIcon,
-  ShieldIcon,
-  SparkleIcon,
-  AwardIcon,
-} from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "브랜드 이야기",
@@ -19,17 +11,17 @@ export const metadata: Metadata = {
 
 const story = [
   {
-    Icon: LeafIcon,
+    icon: siteImages.story.pillars.problem,
     title: "누구나 겪지만\n쉽게 말하지 못한 고민",
     body: "누구나 겪지만 아무도 말하지 못했던 고민, 루미어는 그 민감한 순간에 조용히 곁을 지킵니다. 민망함을 덜어주고, 일상을 더 편안하게 만듭니다.",
   },
   {
-    Icon: FlaskIcon,
+    icon: siteImages.story.pillars.science,
     title: "향수가 아니라\n과학으로 해결하는 방식",
     body: "향으로 덮는 대신, 활성탄소섬유(ACF)로 냄새 분자를 흡착하는 방식으로 근본 원인을 다룹니다. KTL 시험 인증까지 마친 과학적 솔루션을 제공합니다.",
   },
   {
-    Icon: BriefsIcon,
+    icon: siteImages.story.pillars.practical,
     title: "민망함을 덜어주는\n작고 실용적인 솔루션",
     body: "작고 얇은 패드 하나로 언제 어디서나 간편하게. 가볍고 눈에 띄지 않아 누구나 부담 없이 사용할 수 있는 일상의 파트너입니다.",
   },
@@ -37,17 +29,17 @@ const story = [
 
 const why = [
   {
-    Icon: ShieldIcon,
+    icon: siteImages.story.why.quiet,
     title: "조용한 자신감",
     body: "말하지 않아도 괜찮도록, 민망한 순간을 덜어줍니다.",
   },
   {
-    Icon: LeafIcon,
+    icon: siteImages.story.why.light,
     title: "가벼운 사용감",
     body: "얇고 가볍게, 늘어짐 없이. 매일의 습관이 될 수 있도록 만듭니다.",
   },
   {
-    Icon: AwardIcon,
+    icon: siteImages.story.why.verified,
     title: "믿을 수 있는 검증",
     body: "KTL 시험 인증으로 입증된 성능. 신뢰할 수 있는 기준으로 만듭니다.",
   },
@@ -72,14 +64,14 @@ export default function AboutPage() {
             제안합니다.
           </p>
         </div>
-        <div className="pointer-events-none absolute -right-10 top-1/2 hidden h-72 w-80 -translate-y-1/2 overflow-hidden rounded-2xl xl:block">
+        <div className="pointer-events-none absolute -right-6 top-1/2 hidden w-80 -translate-y-1/2 xl:block">
           <Image
-            src={siteImages.hero}
+            src={siteImages.story.hero}
             alt=""
-            fill
+            width={515}
+            height={475}
             priority
-            sizes="320px"
-            className="object-cover"
+            className="w-full"
           />
         </div>
       </section>
@@ -87,9 +79,15 @@ export default function AboutPage() {
       {/* 스토리 3카드 */}
       <section className="container-md py-12">
         <div className="grid gap-4 sm:grid-cols-3 sm:gap-6">
-          {story.map(({ Icon, title, body }) => (
+          {story.map(({ icon, title, body }) => (
             <div key={title} className="card p-7">
-              <Icon className="h-8 w-8 text-mint-600" />
+              <Image
+                src={icon}
+                alt=""
+                width={52}
+                height={52}
+                className="h-[52px] w-[52px]"
+              />
               <h2 className="mt-4 whitespace-pre-line text-lg font-bold leading-snug text-ink-900">
                 {title}
               </h2>
@@ -122,13 +120,13 @@ export default function AboutPage() {
                 ))}
               </ul>
             </div>
-            <div className="relative mt-8 aspect-[5/3] w-56 overflow-hidden rounded-xl">
+            <div className="mt-8">
               <Image
-                src="/products/pad-30-clean.jpg"
+                src={siteImages.story.stilllife}
                 alt="루미어 패드 제품"
-                fill
-                sizes="224px"
-                className="object-cover"
+                width={252}
+                height={142}
+                className="w-56 rounded-xl"
               />
             </div>
           </div>
@@ -166,11 +164,15 @@ export default function AboutPage() {
             왜 루미어인가
           </h2>
           <div className="mt-9 grid gap-8 sm:grid-cols-3 sm:divide-x sm:divide-mint-100">
-            {why.map(({ Icon, title, body }) => (
+            {why.map(({ icon, title, body }) => (
               <div key={title} className="px-2 text-center sm:px-6">
-                <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-mint-200 bg-white">
-                  <Icon className="h-7 w-7 text-mint-600" />
-                </span>
+                <Image
+                  src={icon}
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="mx-auto h-14 w-14"
+                />
                 <p className="mt-4 font-extrabold text-ink-900">{title}</p>
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">
                   {body}
@@ -182,7 +184,16 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="container-md pb-20 text-center">
+      <section className="container-md relative pb-20 text-center">
+        <div className="pointer-events-none absolute bottom-0 right-0 hidden w-56 opacity-90 lg:block">
+          <Image
+            src={siteImages.story.plant}
+            alt=""
+            width={262}
+            height={169}
+            className="w-full"
+          />
+        </div>
         <h2 className="text-2xl font-extrabold tracking-tight text-ink-900">
           루미어가 궁금해졌다면
         </h2>
