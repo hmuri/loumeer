@@ -6,7 +6,7 @@ export const brand = {
   nameKo: "루미어",
   tagline: "참을 수 없는 가벼움, 이제 루미어 하세요",
   description:
-    "루미어는 활성탄소섬유(Activated Carbon Fiber) 소취 패드로 냄새 걱정 없는 일상을 만드는 브랜드입니다. 속옷에 살짝 붙이기만 하면, 모임에서도 사무실에서도 마음까지 가벼워져요.",
+    "일상의 쾌적함을 연구하는 개인위생 솔루션 브랜드, 루미어입니다. 활성탄소섬유(ACF) 소취 패드를 속옷에 살짝 붙이기만 하면 — 모임에서도, 사무실에서도, 마음까지 가벼워져요.",
   logo: "/brand/logo.png",
   instagram: "https://www.instagram.com/loumeer.official/",
   smartstore: "https://smartstore.naver.com/loumeerkorea",

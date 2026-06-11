@@ -57,6 +57,12 @@ export default function ProductCard({ product }: { product: Product }) {
             </span>
           )}
         </div>
+        {product.reviewCount ? (
+          <p className="mt-1.5 text-xs text-ink-400">
+            <span className="text-mint-500">★</span>{" "}
+            {product.reviewScore?.toFixed(1)} · 리뷰 {product.reviewCount}
+          </p>
+        ) : null}
       </div>
     </Link>
   );

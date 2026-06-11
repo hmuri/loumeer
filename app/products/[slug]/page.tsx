@@ -58,6 +58,14 @@ export default function ProductDetailPage({
             {product.name}
           </h1>
 
+          {product.reviewCount ? (
+            <p className="mt-2 text-sm text-ink-400">
+              <span className="text-mint-500">★</span>{" "}
+              <strong className="text-ink-700">{product.reviewScore?.toFixed(1)}</strong>{" "}
+              · 리뷰 {product.reviewCount}개
+            </p>
+          ) : null}
+
           <div className="mt-5 flex items-baseline gap-3">
             {rate && (
               <span className="text-2xl font-extrabold text-mint-500">
@@ -74,21 +82,42 @@ export default function ProductDetailPage({
             )}
           </div>
 
-          {product.options && product.options.length > 0 && (
+          {product.purchaseOptions && product.purchaseOptions.length > 0 && (
             <div className="mt-6">
-              <p className="text-sm font-bold text-ink-700">옵션</p>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {product.options.map((o) => (
-                  <span
-                    key={o}
-                    className="rounded-full bg-white px-4 py-2 text-sm font-medium text-ink-500 shadow-soft"
-                  >
-                    {o}
-                  </span>
+              <p className="text-sm font-bold text-ink-700">구성 선택</p>
+              <ul className="mt-2 space-y-2">
+                {product.purchaseOptions.map((o) => (
+                  <li key={o.label}>
+                    <a
+                      href={o.naverUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between rounded-2xl bg-white px-5 py-3.5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+                    >
+                      <span>
+                        <span className="block text-sm font-bold text-ink-900">
+                          {o.label}
+                        </span>
+                        {o.perUnit && (
+                          <span className="text-xs text-ink-400">{o.perUnit}</span>
+                        )}
+                      </span>
+                      <span className="flex items-baseline gap-2">
+                        {o.originalPrice && (
+                          <span className="text-xs text-ink-400 line-through">
+                            {formatPrice(o.originalPrice)}
+                          </span>
+                        )}
+                        <span className="font-extrabold text-mint-600">
+                          {formatPrice(o.price)}
+                        </span>
+                      </span>
+                    </a>
+                  </li>
                 ))}
-              </div>
+              </ul>
               <p className="mt-2 text-xs text-ink-400">
-                옵션 선택은 네이버 스마트스토어 주문 단계에서 진행돼요.
+                구성을 선택하면 해당 스마트스토어 페이지로 이동해요.
               </p>
             </div>
           )}
@@ -148,6 +177,21 @@ export default function ProductDetailPage({
           ))}
         </div>
       </section>
+
+      {/* 스마트스토어 원본 상세 이미지 */}
+      {product.detailImages && product.detailImages.length > 0 && (
+        <section className="mx-auto mt-20 max-w-3xl">
+          <h2 className="text-center text-2xl font-extrabold text-ink-900">
+            상세 정보
+          </h2>
+          <div className="mt-8 overflow-hidden rounded-blob bg-white shadow-soft">
+            {product.detailImages.map((src) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={src} src={src} alt="" className="w-full" loading="lazy" />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* 다른 제품 */}
       {others.length > 0 && (
