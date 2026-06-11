@@ -95,12 +95,12 @@ const steps = [
 /** 홈 제품 카드 이미지 — 스마트스토어 원본 기반 고해상 컷 */
 const productImages: Record<string, string> = {
   "pad-4plus1": "/products/brand-pads-clean.jpg",
-  "pad-monthly-30": "/products/pad-30-clean.jpg",
-  "pad-monthly-60": "/products/pad-60-clean.jpg",
+  "pad-monthly": "/products/pad-30-clean.jpg",
+  "pad-poopcast": "/products/poopcast.jpg",
 };
 
 export default function HomePage() {
-  const featured = ["pad-4plus1", "pad-monthly-30", "pad-monthly-60"]
+  const featured = ["pad-4plus1", "pad-monthly", "pad-poopcast"]
     .map((slug) => products.find((product) => product.slug === slug))
     .filter(Boolean);
 
@@ -358,7 +358,7 @@ export default function HomePage() {
           />
           {/* 좌하단 구매 버튼 (데스크탑/태블릿) */}
           <a
-            href={products[0].naverUrl}
+            href={products[0].variants[0].naverUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary absolute bottom-[20%] left-[5.5%] hidden sm:inline-flex"
@@ -368,7 +368,7 @@ export default function HomePage() {
         </div>
         {/* 모바일에서는 배너 아래 버튼 */}
         <a
-          href={products[0].naverUrl}
+          href={products[0].variants[0].naverUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary mt-4 w-full sm:hidden"

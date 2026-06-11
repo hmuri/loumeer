@@ -3,13 +3,12 @@
  *  LOUMEER 제품 데이터 — 네이버 스마트스토어 1:1 연동 (실데이터)
  *  출처: smartstore.naver.com/loumeerkorea (2026-06-11 기준)
  * ─────────────────────────────────────────────────────────────
- *  스마트스토어 8개 리스팅 매핑:
- *  - 4+1 스타터 ×1~×5세트  → 12497890371~12497890375
- *  - 먼슬리 플랜 30개입     → 12843310687
- *  - 먼슬리 플랜 60개입     → 12843347068
- *  - 풉캐스트 콜라보 4+1    → 13381194728
- *  구매 동선: 추천 구성(처음/매일/절약) 3개를 메인으로, 수량 추가
- *  구성(2~5세트)은 moreOptions로 조용히 노출.
+ *  상품군 3개 × 구성(variants) = 스토어 8개 리스팅 1:1 매핑
+ *  - 제거패드 4+1   : 4개입 × 1~5개  → 12497890371~12497890375
+ *  - 먼슬리 플랜    : 30개입 / 60개입 → 12843310687 / 12843347068
+ *  - 풉캐스트 콜라보 : 단일            → 13381194728
+ *  상세 페이지에서 구성을 골라 보다가, [네이버스토어에서 구매하기]를
+ *  눌렀을 때만 선택된 구성의 리스팅으로 이동합니다.
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -19,31 +18,28 @@ export interface DetailSection {
   image?: string;
 }
 
-export interface PurchaseOption {
-  tag?: string; // "처음 써보는 분께 추천" 등
+export interface Variant {
+  /** 스마트스토어 정식 상품명 (1:1) */
+  name: string;
+  /** 구성 선택 버튼 표기 */
   label: string;
-  description?: string; // 구성 한 줄 설명
-  image?: string;
   price: number;
   originalPrice?: number;
   perUnit?: string;
   naverUrl: string;
+  /** 구성별 대표 이미지 (있으면 갤러리 첫 장 교체) */
+  image?: string;
 }
 
 export interface Product {
   slug: string;
-  name: string; // 스마트스토어 정식 상품명 (1:1)
-  displayName?: string; // 사이트 표기용 짧은 이름
-  roleLabel?: string; // "처음 경험용" 등 구성 역할
+  /** 상품군 공통 명칭 (정식 상품명의 공통 부분) */
+  name: string;
   shortDescription: string;
-  price: number;
-  originalPrice?: number;
   images: string[];
   category: string;
-  badges?: string[]; // 카드 상단 작은 텍스트 라벨 (BEST, SET 등)
-  naverUrl: string;
-  purchaseOptions?: PurchaseOption[];
-  moreOptions?: PurchaseOption[]; // 추가 수량 구성 (조용히 노출)
+  badges?: string[];
+  variants: Variant[];
   reviewCount?: number;
   reviewScore?: number;
   detail: DetailSection[];
@@ -55,42 +51,6 @@ export const categories = ["전체", "4+1", "먼슬리 플랜", "콜라보"];
 
 const store = "https://smartstore.naver.com/loumeerkorea/products/";
 const cdn = "https://shop-phinf.pstatic.net/";
-
-/** 추천 구성 3종 — 모든 상세 페이지에서 공유 */
-const recommendedOptions: PurchaseOption[] = [
-  {
-    label: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 1개",
-    image: "/products/brand-pads-clean.jpg",
-    price: 8500,
-    originalPrice: 15000,
-    perUnit: "1개당 2,125원",
-    naverUrl: store + "12497890371",
-  },
-  {
-    label: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm, 30개입, 1개",
-    image: "/products/pad-30-clean.jpg",
-    price: 47900,
-    originalPrice: 117500,
-    perUnit: "1개당 1,597원",
-    naverUrl: store + "12843310687",
-  },
-  {
-    label: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm, 60개입, 1개",
-    image: "/products/pad-60-clean.jpg",
-    price: 89900,
-    originalPrice: 225000,
-    perUnit: "1개당 1,498원 · 최저단가",
-    naverUrl: store + "12843347068",
-  },
-];
-
-/** 4+1 스타터의 수량 추가 구성 (스마트스토어 리스팅 1:1) */
-const starterMoreOptions: PurchaseOption[] = [
-  { label: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 2개", price: 16800, originalPrice: 30000, perUnit: "1개당 2,100원", naverUrl: store + "12497890372" },
-  { label: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 3개", price: 24900, originalPrice: 45000, perUnit: "1개당 2,075원", naverUrl: store + "12497890373" },
-  { label: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 4개", price: 32800, originalPrice: 60000, perUnit: "1개당 2,050원", naverUrl: store + "12497890374" },
-  { label: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 5개", price: 40500, originalPrice: 75000, perUnit: "1개당 2,025원", naverUrl: store + "12497890375" },
-];
 
 const howTo: DetailSection[] = [
   {
@@ -121,6 +81,11 @@ const commonDetailImages = [
   cdn + "20251031_164/1761875785556y3Tgx_JPEG/14.jpg",
 ];
 
+const starterDetailImages = [
+  cdn + "20251031_125/1761875785319hhAV4_JPEG/1.jpg",
+  ...commonDetailImages,
+];
+
 const monthlyDetailImages = [
   cdn + "20251222_118/1766367147274VQdwA_PNG/1.png",
   cdn + "20251222_35/1766367147421bGXfS_PNG/2.png",
@@ -128,21 +93,26 @@ const monthlyDetailImages = [
   ...commonDetailImages,
 ];
 
+const n41 = (count: number) =>
+  `루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, ${count}개`;
+
 export const products: Product[] = [
   {
     slug: "pad-4plus1",
-    name: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 1개",
+    name: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입",
     shortDescription: "처음 사용해보는 분들을 위한 가장 합리적인 구성",
-    price: 8500,
-    originalPrice: 15000,
     images: ["/products/brand-pads-clean.jpg", "/products/pad-30-clean.jpg"],
     category: "4+1",
     badges: ["BEST"],
-    naverUrl: store + "12497890371",
     reviewCount: 75,
     reviewScore: 4.53,
-    purchaseOptions: recommendedOptions,
-    moreOptions: starterMoreOptions,
+    variants: [
+      { name: n41(1), label: "1개", price: 8500, originalPrice: 15000, perUnit: "1개당 2,125원", naverUrl: store + "12497890371" },
+      { name: n41(2), label: "2개", price: 16800, originalPrice: 30000, perUnit: "1개당 2,100원", naverUrl: store + "12497890372" },
+      { name: n41(3), label: "3개", price: 24900, originalPrice: 45000, perUnit: "1개당 2,075원", naverUrl: store + "12497890373" },
+      { name: n41(4), label: "4개", price: 32800, originalPrice: 60000, perUnit: "1개당 2,050원", naverUrl: store + "12497890374" },
+      { name: n41(5), label: "5개", price: 40500, originalPrice: 75000, perUnit: "1개당 2,025원", naverUrl: store + "12497890375" },
+    ],
     detail: [
       {
         heading: "루미어가 처음이신가요?",
@@ -150,49 +120,41 @@ export const products: Product[] = [
       },
       ...howTo,
     ],
-    detailImages: [
-      cdn + "20251031_125/1761875785319hhAV4_JPEG/1.jpg",
-      ...commonDetailImages,
-    ],
+    detailImages: starterDetailImages,
   },
   {
-    slug: "pad-monthly-30",
-    name: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm, 30개입, 1개",
-    shortDescription: "매일 사용하기 좋은 경제적인 한 달 구성",
-    price: 47900,
-    originalPrice: 117500,
+    slug: "pad-monthly",
+    name: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm",
+    shortDescription: "매일 사용하기 좋은 경제적인 구성",
     images: ["/products/pad-30-clean.jpg", "/products/brand-pads-clean.jpg"],
     category: "먼슬리 플랜",
-    naverUrl: store + "12843310687",
-    reviewCount: 11,
-    reviewScore: 4.64,
-    purchaseOptions: recommendedOptions,
-    detail: [
-      {
-        heading: "매일 쓰는 분들을 위한 한 달 구성",
-        body: "하루 1개, 30일의 쾌적함. 개별 포장이라 출근 가방, 파우치 어디든 챙기기 좋아요. 4+1 구성 대비 1개당 가격이 훨씬 합리적이에요.",
-      },
-      ...howTo,
-    ],
-    detailImages: monthlyDetailImages,
-  },
-  {
-    slug: "pad-monthly-60",
-    name: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm, 60개입, 1개",
-    shortDescription: "넉넉한 대용량으로 더 오래, 더 편안하게",
-    price: 89900,
-    originalPrice: 225000,
-    images: ["/products/pad-60-clean.jpg", "/products/brand-pads-clean.jpg"],
-    category: "먼슬리 플랜",
     badges: ["BEST"],
-    naverUrl: store + "12843347068",
     reviewCount: 11,
     reviewScore: 4.64,
-    purchaseOptions: recommendedOptions,
+    variants: [
+      {
+        name: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm, 30개입, 1개",
+        label: "30개입",
+        price: 47900,
+        originalPrice: 117500,
+        perUnit: "1개당 1,597원",
+        naverUrl: store + "12843310687",
+        image: "/products/pad-30-clean.jpg",
+      },
+      {
+        name: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm, 60개입, 1개",
+        label: "60개입",
+        price: 89900,
+        originalPrice: 225000,
+        perUnit: "1개당 1,498원 · 최저단가",
+        naverUrl: store + "12843347068",
+        image: "/products/pad-60-clean.jpg",
+      },
+    ],
     detail: [
       {
-        heading: "이미 써본 분들이 다시 찾는 구성",
-        body: "1개당 1,498원, 루미어 최저 단가예요. 두 달의 여유를 한 번에 챙기세요.",
+        heading: "매일 쓰는 분들을 위한 구성",
+        body: "하루 1개, 한 달의 쾌적함. 개별 포장이라 출근 가방, 파우치 어디든 챙기기 좋아요. 4+1 구성 대비 1개당 가격이 훨씬 합리적이에요.",
       },
       ...howTo,
     ],
@@ -202,16 +164,15 @@ export const products: Product[] = [
     slug: "pad-poopcast",
     name: "[풉캐스트 전용] 루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 1개",
     shortDescription: "루미어 × POOPCAST 콜라보 에디션",
-    price: 15000,
     images: ["/products/poopcast.jpg", "/products/brand-pads-clean.jpg"],
     category: "콜라보",
     badges: ["LIMITED"],
-    naverUrl: store + "13381194728",
     reviewCount: 1,
     reviewScore: 5.0,
-    purchaseOptions: [
+    variants: [
       {
-        label: "[풉캐스트 전용] 루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 1개",
+        name: "[풉캐스트 전용] 루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 1개",
+        label: "4개입, 1개",
         price: 15000,
         naverUrl: store + "13381194728",
       },
@@ -223,59 +184,15 @@ export const products: Product[] = [
       },
       ...howTo,
     ],
-    detailImages: [
-      cdn + "20251031_125/1761875785319hhAV4_JPEG/1.jpg",
-      ...commonDetailImages,
-    ],
+    detailImages: starterDetailImages,
   },
 ];
 
-/** 4+1 수량 변형 리스팅 (×2~×5) — 스토어 1:1, 전체 제품 그리드에 노출 */
-const starterVariant = (
-  count: number,
-  price: number,
-  originalPrice: number,
-  productNo: string
-): Product => ({
-  slug: `pad-4plus1-x${count}`,
-  name: `루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, ${count}개`,
-  shortDescription: `4개입 묶음 구성으로 더 합리적으로`,
-  price,
-  originalPrice,
-  images: ["/products/brand-pads-clean.jpg", "/products/pad-30-clean.jpg"],
-  category: "4+1",
-  naverUrl: store + productNo,
-  reviewCount: 75,
-  reviewScore: 4.53,
-  purchaseOptions: recommendedOptions,
-  moreOptions: starterMoreOptions.filter(
-    (o) => !o.naverUrl.endsWith(productNo)
-  ),
-  detail: [
-    {
-      heading: "쓸수록 합리적인 묶음 구성",
-      body: "이미 루미어를 알고 있다면, 묶음 구성으로 1개당 가격을 더 낮춰보세요. 개별 포장이라 보관도 간편해요.",
-    },
-    ...howTo,
-  ],
-  detailImages: [
-    cdn + "20251031_125/1761875785319hhAV4_JPEG/1.jpg",
-    ...commonDetailImages,
-  ],
-});
-
-products.push(
-  starterVariant(2, 16800, 30000, "12497890372"),
-  starterVariant(3, 24900, 45000, "12497890373"),
-  starterVariant(4, 32800, 60000, "12497890374"),
-  starterVariant(5, 40500, 75000, "12497890375")
-);
-
 export const formatPrice = (n: number) => n.toLocaleString("ko-KR") + "원";
 
-export const discountRate = (p: { price: number; originalPrice?: number }) =>
-  p.originalPrice && p.originalPrice > p.price
-    ? Math.round((1 - p.price / p.originalPrice) * 100)
+export const discountRate = (v: { price: number; originalPrice?: number }) =>
+  v.originalPrice && v.originalPrice > v.price
+    ? Math.round((1 - v.price / v.originalPrice) * 100)
     : null;
 
 export const getProduct = (slug: string) =>

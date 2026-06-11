@@ -3,6 +3,9 @@ import Link from "next/link";
 import { Product, formatPrice } from "@/data/products";
 
 export default function ProductCard({ product }: { product: Product }) {
+  const first = product.variants[0];
+  const multi = product.variants.length > 1;
+
   return (
     <Link
       href={`/products/${product.slug}`}
@@ -32,14 +35,20 @@ export default function ProductCard({ product }: { product: Product }) {
         </p>
         <div className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
           <span className="text-lg font-extrabold text-ink-900">
-            {formatPrice(product.price)}
+            {formatPrice(first.price)}
+            {multi && <span className="text-sm font-semibold">~</span>}
           </span>
-          {product.originalPrice && (
+          {first.originalPrice && (
             <span className="text-[13px] text-ink-400 line-through">
-              {formatPrice(product.originalPrice)}
+              {formatPrice(first.originalPrice)}
             </span>
           )}
         </div>
+        {multi && (
+          <p className="mt-1 text-xs text-ink-400">
+            {product.variants.map((v) => v.label).join(" · ")} 구성
+          </p>
+        )}
         {product.reviewCount ? (
           <p className="mt-1.5 text-xs text-ink-400">
             ★ {product.reviewScore?.toFixed(1)} · 리뷰 {product.reviewCount}
