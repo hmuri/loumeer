@@ -51,7 +51,7 @@ export interface Product {
   soldOut?: boolean;
 }
 
-export const categories = ["전체", "스타터", "먼슬리 플랜", "콜라보"];
+export const categories = ["전체", "4+1", "먼슬리 플랜", "콜라보"];
 
 const store = "https://smartstore.naver.com/loumeerkorea/products/";
 const cdn = "https://shop-phinf.pstatic.net/";
@@ -59,9 +59,7 @@ const cdn = "https://shop-phinf.pstatic.net/";
 /** 추천 구성 3종 — 모든 상세 페이지에서 공유 */
 const recommendedOptions: PurchaseOption[] = [
   {
-    tag: "추천",
-    label: "4+1 스타터",
-    description: "10cm × 10cm 패드 4개 + 1개 추가 증정",
+    label: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 1개",
     image: "/products/brand-pads-clean.jpg",
     price: 8500,
     originalPrice: 15000,
@@ -69,9 +67,7 @@ const recommendedOptions: PurchaseOption[] = [
     naverUrl: store + "12497890371",
   },
   {
-    tag: "매일 관리용",
-    label: "30개입 플랜",
-    description: "루미어 패드 30개 (개별 포장)",
+    label: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm, 30개입, 1개",
     image: "/products/pad-30-clean.jpg",
     price: 47900,
     originalPrice: 117500,
@@ -79,9 +75,7 @@ const recommendedOptions: PurchaseOption[] = [
     naverUrl: store + "12843310687",
   },
   {
-    tag: "넉넉한 준비용",
-    label: "60개입 플랜",
-    description: "루미어 패드 60개 (개별 포장)",
+    label: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm, 60개입, 1개",
     image: "/products/pad-60-clean.jpg",
     price: 89900,
     originalPrice: 225000,
@@ -92,10 +86,10 @@ const recommendedOptions: PurchaseOption[] = [
 
 /** 4+1 스타터의 수량 추가 구성 (스마트스토어 리스팅 1:1) */
 const starterMoreOptions: PurchaseOption[] = [
-  { label: "4개입 × 2세트", price: 16800, originalPrice: 30000, perUnit: "1개당 2,100원", naverUrl: store + "12497890372" },
-  { label: "4개입 × 3세트", price: 24900, originalPrice: 45000, perUnit: "1개당 2,075원", naverUrl: store + "12497890373" },
-  { label: "4개입 × 4세트", price: 32800, originalPrice: 60000, perUnit: "1개당 2,050원", naverUrl: store + "12497890374" },
-  { label: "4개입 × 5세트", price: 40500, originalPrice: 75000, perUnit: "1개당 2,025원", naverUrl: store + "12497890375" },
+  { label: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 2개", price: 16800, originalPrice: 30000, perUnit: "1개당 2,100원", naverUrl: store + "12497890372" },
+  { label: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 3개", price: 24900, originalPrice: 45000, perUnit: "1개당 2,075원", naverUrl: store + "12497890373" },
+  { label: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 4개", price: 32800, originalPrice: 60000, perUnit: "1개당 2,050원", naverUrl: store + "12497890374" },
+  { label: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 5개", price: 40500, originalPrice: 75000, perUnit: "1개당 2,025원", naverUrl: store + "12497890375" },
 ];
 
 const howTo: DetailSection[] = [
@@ -138,13 +132,11 @@ export const products: Product[] = [
   {
     slug: "pad-4plus1",
     name: "루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 1개",
-    displayName: "4+1 스타터",
-    roleLabel: "처음 경험용",
     shortDescription: "처음 사용해보는 분들을 위한 가장 합리적인 구성",
     price: 8500,
     originalPrice: 15000,
     images: ["/products/brand-pads-clean.jpg", "/products/pad-30-clean.jpg"],
-    category: "스타터",
+    category: "4+1",
     badges: ["BEST"],
     naverUrl: store + "12497890371",
     reviewCount: 75,
@@ -166,8 +158,6 @@ export const products: Product[] = [
   {
     slug: "pad-monthly-30",
     name: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm, 30개입, 1개",
-    displayName: "30개입 플랜",
-    roleLabel: "매일 관리용",
     shortDescription: "매일 사용하기 좋은 경제적인 한 달 구성",
     price: 47900,
     originalPrice: 117500,
@@ -180,7 +170,7 @@ export const products: Product[] = [
     detail: [
       {
         heading: "매일 쓰는 분들을 위한 한 달 구성",
-        body: "하루 1개, 30일의 쾌적함. 개별 포장이라 출근 가방, 파우치 어디든 챙기기 좋아요. 스타터 대비 1개당 가격이 훨씬 합리적이에요.",
+        body: "하루 1개, 30일의 쾌적함. 개별 포장이라 출근 가방, 파우치 어디든 챙기기 좋아요. 4+1 구성 대비 1개당 가격이 훨씬 합리적이에요.",
       },
       ...howTo,
     ],
@@ -189,8 +179,6 @@ export const products: Product[] = [
   {
     slug: "pad-monthly-60",
     name: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm, 60개입, 1개",
-    displayName: "60개입 플랜",
-    roleLabel: "넉넉한 준비용",
     shortDescription: "넉넉한 대용량으로 더 오래, 더 편안하게",
     price: 89900,
     originalPrice: 225000,
@@ -213,8 +201,6 @@ export const products: Product[] = [
   {
     slug: "pad-poopcast",
     name: "[풉캐스트 전용] 루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 1개",
-    displayName: "풉캐스트 콜라보 4+1",
-    roleLabel: "한정 에디션",
     shortDescription: "루미어 × POOPCAST 콜라보 에디션",
     price: 15000,
     images: ["/products/poopcast.jpg", "/products/brand-pads-clean.jpg"],
@@ -225,8 +211,7 @@ export const products: Product[] = [
     reviewScore: 5.0,
     purchaseOptions: [
       {
-        tag: "한정 콜라보 에디션",
-        label: "콜라보 패키지 4개입 + 1개 증정",
+        label: "[풉캐스트 전용] 루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, 1개",
         price: 15000,
         naverUrl: store + "13381194728",
       },
@@ -234,7 +219,7 @@ export const products: Product[] = [
     detail: [
       {
         heading: "POOPCAST와 함께한 한정 에디션",
-        body: "유쾌한 똥 이야기 채널 풉캐스트와의 콜라보 패키지예요. 구성은 4+1 스타터와 동일하고, 패키지가 특별해요.",
+        body: "유쾌한 똥 이야기 채널 풉캐스트와의 콜라보 패키지예요. 구성은 4+1 구성과 동일하고, 패키지가 특별해요.",
       },
       ...howTo,
     ],

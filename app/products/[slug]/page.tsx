@@ -23,7 +23,7 @@ export function generateMetadata({
   const product = getProduct(params.slug);
   if (!product) return {};
   return {
-    title: product.displayName ?? product.name,
+    title: product.name,
     description: product.shortDescription,
   };
 }
@@ -67,12 +67,9 @@ export default function ProductDetailPage({
           <p className="text-sm font-bold text-mint-600">
             {product.shortDescription}
           </p>
-          <h1 className="mt-2 text-2xl font-extrabold leading-snug tracking-tight text-ink-900 sm:text-[28px]">
-            {product.displayName ?? product.name}
-          </h1>
-          <p className="mt-1.5 break-keep text-[13px] text-ink-400">
+          <h1 className="mt-2 break-keep text-xl font-extrabold leading-snug tracking-tight text-ink-900 sm:text-2xl">
             {product.name}
-          </p>
+          </h1>
 
           {product.reviewCount ? (
             <p className="mt-3 text-sm text-ink-500">
@@ -118,7 +115,9 @@ export default function ProductDetailPage({
                         추천
                       </span>
                     )}
-                    <span className="font-bold text-ink-900">{o.label}</span>
+                    <span className="break-keep text-[13px] font-bold leading-snug text-ink-900">
+                      {o.label}
+                    </span>
                     {o.description && (
                       <span className="mt-1 text-[12px] leading-snug text-ink-400">
                         {o.description}

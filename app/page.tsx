@@ -241,13 +241,10 @@ export default function HomePage() {
                   href={`/products/${product.slug}`}
                   className="group flex min-h-[420px] flex-col rounded-[24px] border border-fog-200 bg-white p-6 text-center transition hover:-translate-y-1 hover:shadow-lift"
                 >
-                  <p className="text-xs font-extrabold text-mint-700">
-                    {product.roleLabel}
-                  </p>
-                  <h3 className="mt-2 text-xl font-extrabold text-ink-900">
-                    {product.displayName}
+                  <h3 className="break-keep text-[15px] font-extrabold leading-snug text-ink-900">
+                    {product.name}
                   </h3>
-                  <p className="mx-auto mt-2 min-h-[40px] max-w-[190px] text-[13px] leading-relaxed text-ink-500">
+                  <p className="mx-auto mt-2 min-h-[40px] max-w-[210px] break-keep text-[13px] leading-relaxed text-ink-500">
                     {product.shortDescription}
                   </p>
                   <div className="relative mt-5 aspect-[4/3] overflow-hidden rounded-2xl">

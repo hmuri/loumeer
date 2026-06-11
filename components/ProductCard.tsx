@@ -24,13 +24,8 @@ export default function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="border-t border-fog-200 p-4 sm:p-5">
-        {product.roleLabel && (
-          <p className="mb-1.5 text-[11px] font-bold tracking-[0.08em] text-mint-600">
-            {product.roleLabel}
-          </p>
-        )}
-        <h3 className="font-bold leading-snug text-ink-900">
-          {product.displayName ?? product.name}
+        <h3 className="line-clamp-2 break-keep text-[15px] font-bold leading-snug text-ink-900">
+          {product.name}
         </h3>
         <p className="mt-1 line-clamp-1 text-[13px] text-ink-400">
           {product.shortDescription}
