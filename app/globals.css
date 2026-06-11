@@ -16,7 +16,7 @@ body {
 
 @layer components {
   .container-md {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+    @apply mx-auto w-full max-w-[1320px] px-5 sm:px-10;
   }
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-xl bg-mint-500 px-6 py-3 text-[15px] font-semibold text-white transition hover:bg-mint-600;

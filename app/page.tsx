@@ -170,7 +170,7 @@ export default function HomePage() {
               width={515}
               height={475}
               priority
-              className="w-full max-w-[560px] rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
+              className="w-full max-w-[640px] rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
             />
           </div>
         </div>
