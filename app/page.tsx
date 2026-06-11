@@ -213,7 +213,7 @@ export default function HomePage() {
       </section>
 
       <section className="container-md py-5">
-        <div className="grid gap-6 rounded-[24px] bg-fog-100 p-5 sm:p-7 lg:grid-cols-[0.82fr_2.18fr]">
+        <div className="grid gap-6 rounded-[24px] bg-fog-100 p-5 sm:p-7 lg:grid-cols-[0.55fr_2.45fr]">
           <div className="p-2 sm:p-3">
             <p className="eyebrow">Best product</p>
             <h2 className="mt-4 text-[28px] font-extrabold leading-[1.25] tracking-tight text-ink-900">
@@ -244,19 +244,19 @@ export default function HomePage() {
                   <h3 className="break-keep text-[15px] font-extrabold leading-snug text-ink-900">
                     {product.name}
                   </h3>
-                  <p className="mx-auto mt-2 min-h-[40px] max-w-[210px] break-keep text-[13px] leading-relaxed text-ink-500">
+                  <p className="mx-auto mt-2 min-h-[40px] max-w-[240px] break-keep text-[13px] leading-relaxed text-ink-500">
                     {product.shortDescription}
                   </p>
-                  <div className="relative mt-5 aspect-[4/3] overflow-hidden rounded-2xl">
+                  <div className="relative mt-5 aspect-square overflow-hidden rounded-2xl">
                     <Image
                       src={productImages[product.slug] ?? product.images[0]}
                       alt={product.name}
                       fill
-                      sizes="(max-width: 640px) 100vw, 28vw"
+                      sizes="(max-width: 640px) 100vw, 30vw"
                       className="object-cover transition duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
-                  <div className="mt-auto border-t border-fog-200 pt-4">
+                  <div className="mt-5 border-t border-fog-200 pt-4">
                     <span className="text-sm font-bold text-mint-700">
                       제품 자세히 보기 →
                     </span>
