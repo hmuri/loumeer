@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#CFE0D0"/>
+  <circle cx="300" cy="270" r="110" fill="white" opacity="0.7"/>
+  <circle cx="262" cy="255" r="10" fill="#4A3F36"/>
+  <circle cx="338" cy="255" r="10" fill="#4A3F36"/>
+  <path d="M265 300 Q300 330 335 300" stroke="#4A3F36" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <text x="300" y="480" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#4A3F36">제품 이미지 자리예요</text>
+</svg>
