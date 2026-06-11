@@ -49,30 +49,33 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-fog-300 bg-fog-50">
-        <div className="container-md relative py-20 text-center lg:py-24">
-          <p className="eyebrow">Our story</p>
-          <h1 className="mt-4 text-3xl font-extrabold leading-[1.3] tracking-tight text-ink-900 sm:text-4xl">
-            아무도 말하지 못했던 고민을
-            <br />
-            가장 가볍게 해결합니다
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl text-[15px] leading-7 text-ink-500">
-            루미어는 일상의 냄새 고민을 조용히 해결하는 솔루션 브랜드입니다.
-            <br className="hidden sm:block" />
-            향으로 덮지 않고, 과학으로 원인을 다루어 민망함 없이 편안한 하루를
-            제안합니다.
-          </p>
-        </div>
-        <div className="pointer-events-none absolute -right-6 top-1/2 hidden w-80 -translate-y-1/2 xl:block">
-          <Image
-            src={siteImages.story.hero}
-            alt=""
-            width={515}
-            height={475}
-            priority
-            className="w-full"
-          />
+      <section className="border-b border-fog-300 bg-white">
+        <div className="container-md grid items-center gap-10 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
+          <div>
+            <span className="inline-flex rounded-full bg-mint-50 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-mint-700">
+              Our story
+            </span>
+            <h1 className="mt-5 break-keep text-[28px] font-bold leading-[1.32] tracking-tight text-ink-900 sm:text-[36px]">
+              아무도 말하지 못했던 고민을
+              <br />
+              가장 가볍게 해결합니다
+            </h1>
+            <p className="mt-5 max-w-[520px] break-keep text-[15px] leading-7 text-ink-500">
+              루미어는 일상의 냄새 고민을 조용히 해결하는 솔루션 브랜드입니다.
+              향으로 덮지 않고, 과학으로 원인을 다루어 민망함 없이 편안한
+              하루를 제안합니다.
+            </p>
+          </div>
+          <div className="flex items-center justify-center">
+            <Image
+              src={siteImages.hero}
+              alt="루미어 방귀냄새 제거패드 패키지와 패드"
+              width={515}
+              height={475}
+              priority
+              className="w-full max-w-[520px] rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
+            />
+          </div>
         </div>
       </section>
 
