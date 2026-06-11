@@ -5,6 +5,13 @@ import Footer from "@/components/Footer";
 import { brand } from "@/data/brand";
 import { SITE_URL } from "@/data/site";
 
+const previewImage = {
+  url: "/icon.png",
+  width: 512,
+  height: 512,
+  alt: "루미어 로고",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -33,19 +40,13 @@ export const metadata: Metadata = {
     siteName: `${brand.nameKo} 공식몰`,
     locale: "ko_KR",
     type: "website",
-    images: [
-      {
-        url: "/loumeer_code_ready_asset_pack/home/hero/hero-product-main.png",
-        width: 515,
-        height: 475,
-        alt: "루미어 방귀냄새 제거패드",
-      },
-    ],
+    images: [previewImage],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: `${brand.nameKo} — ${brand.tagline}`,
     description: brand.description,
+    images: [previewImage],
   },
   robots: {
     index: true,
