@@ -95,7 +95,7 @@ const steps = [
 /** 홈 제품 카드 이미지 — 스마트스토어 원본 기반 고해상 컷 */
 const productImages: Record<string, string> = {
   "pad-4plus1": "/products/brand-pads-clean.jpg",
-  "pad-monthly": "/products/pad-30-clean.jpg",
+  "pad-monthly": "/products/pad-30.jpg",
   "pad-poopcast": "/products/poopcast.jpg",
 };
 

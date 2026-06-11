@@ -126,7 +126,7 @@ export const products: Product[] = [
     slug: "pad-monthly",
     name: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm",
     shortDescription: "매일 사용하기 좋은 경제적인 구성",
-    images: ["/products/pad-30-clean.jpg", "/products/brand-pads-clean.jpg"],
+    images: ["/products/pad-30.jpg", "/products/brand-pads-clean.jpg"],
     category: "먼슬리 플랜",
     badges: ["BEST"],
     reviewCount: 11,
@@ -139,7 +139,7 @@ export const products: Product[] = [
         originalPrice: 117500,
         perUnit: "1개당 1,597원",
         naverUrl: store + "12843310687",
-        image: "/products/pad-30-clean.jpg",
+        image: "/products/pad-30.jpg",
       },
       {
         name: "루미어 방귀냄새 제거패드 먼슬리 플랜 10x10cm, 60개입, 1개",
@@ -148,7 +148,7 @@ export const products: Product[] = [
         originalPrice: 225000,
         perUnit: "1개당 1,498원 · 최저단가",
         naverUrl: store + "12843347068",
-        image: "/products/pad-60-clean.jpg",
+        image: "/products/pad-60.jpg",
       },
     ],
     detail: [
