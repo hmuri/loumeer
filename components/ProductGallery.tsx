@@ -14,7 +14,7 @@ export default function ProductGallery({
 
   return (
     <div>
-      <div className="relative aspect-square overflow-hidden rounded-blob bg-cream-200 shadow-soft">
+      <div className="relative aspect-square overflow-hidden rounded-blob bg-fog-200 shadow-soft">
         <Image
           src={images[active]}
           alt={`${name} 이미지 ${active + 1}`}
@@ -32,7 +32,7 @@ export default function ProductGallery({
               onClick={() => setActive(i)}
               className={`relative h-16 w-16 overflow-hidden rounded-2xl transition ${
                 i === active
-                  ? "ring-2 ring-clay-500 ring-offset-2 ring-offset-cream-100"
+                  ? "ring-2 ring-mint-500 ring-offset-2 ring-offset-fog-100"
                   : "opacity-70 hover:opacity-100"
               }`}
               aria-label={`이미지 ${i + 1} 보기`}

@@ -10,7 +10,7 @@ export default function ProductCard({ product }: { product: Product }) {
       href={`/products/${product.slug}`}
       className="group block overflow-hidden rounded-blob bg-white shadow-soft transition hover:-translate-y-1.5 hover:shadow-lift"
     >
-      <div className="relative aspect-square overflow-hidden bg-cream-200">
+      <div className="relative aspect-square overflow-hidden bg-fog-200">
         <Image
           src={product.images[0]}
           alt={product.name}
@@ -24,7 +24,7 @@ export default function ProductCard({ product }: { product: Product }) {
               <span
                 key={b}
                 className={`rounded-full px-2.5 py-1 text-[11px] font-bold text-white ${
-                  b === "NEW" ? "bg-sage-500" : "bg-clay-500"
+                  b === "NEW" ? "bg-blue-500" : "bg-mint-500"
                 }`}
               >
                 {b}
@@ -47,7 +47,7 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.name}
         </h3>
         <div className="mt-2 flex items-baseline gap-2">
-          {rate && <span className="font-extrabold text-clay-500">{rate}%</span>}
+          {rate && <span className="font-extrabold text-mint-500">{rate}%</span>}
           <span className="text-lg font-extrabold text-ink-900">
             {formatPrice(product.price)}
           </span>

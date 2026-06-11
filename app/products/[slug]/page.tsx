@@ -42,7 +42,7 @@ export default function ProductDetailPage({
   return (
     <article className="container-md py-12">
       <nav className="text-sm text-ink-400">
-        <Link href="/products" className="hover:text-clay-600">
+        <Link href="/products" className="hover:text-mint-600">
           전체 제품
         </Link>
         <span className="mx-2">›</span>
@@ -53,14 +53,14 @@ export default function ProductDetailPage({
         <ProductGallery images={product.images} name={product.name} />
 
         <div className="flex flex-col">
-          <p className="font-medium text-clay-500">{product.shortDescription}</p>
+          <p className="font-medium text-mint-500">{product.shortDescription}</p>
           <h1 className="mt-2 text-2xl font-extrabold leading-snug text-ink-900 sm:text-3xl">
             {product.name}
           </h1>
 
           <div className="mt-5 flex items-baseline gap-3">
             {rate && (
-              <span className="text-2xl font-extrabold text-clay-500">
+              <span className="text-2xl font-extrabold text-mint-500">
                 {rate}%
               </span>
             )}
@@ -138,7 +138,7 @@ export default function ProductDetailPage({
                   />
                 </div>
               )}
-              <h3 className="text-xl font-bold text-clay-600">
+              <h3 className="text-xl font-bold text-mint-600">
                 {section.heading}
               </h3>
               <p className="mx-auto mt-3 max-w-xl leading-relaxed text-ink-500">

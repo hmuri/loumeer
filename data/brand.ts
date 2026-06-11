@@ -4,14 +4,15 @@
 export const brand = {
   name: "LOUMEER",
   nameKo: "루미어",
-  tagline: "매일의 공간을 조금 더 다정하게",
+  tagline: "참을 수 없는 가벼움, 이제 루미어 하세요",
   description:
-    "루미어는 일상의 작은 순간을 더 포근하게 만드는 리빙 브랜드입니다. 매일 쓰는 물건일수록 더 예쁘고, 더 편하고, 더 오래 곁에 두고 싶어야 한다고 믿어요.",
+    "루미어는 활성탄소섬유(Activated Carbon Fiber) 소취 패드로 냄새 걱정 없는 일상을 만드는 브랜드입니다. 속옷에 살짝 붙이기만 하면, 모임에서도 사무실에서도 마음까지 가벼워져요.",
+  logo: "/brand/logo.png",
   instagram: "https://www.instagram.com/loumeer.official/",
   smartstore: "https://smartstore.naver.com/loumeerkorea",
   email: "hello@loumeer.kr", // TODO: 실제 이메일로 교체
   cs: {
     hours: "평일 10:00 – 17:00 (점심 12:00 – 13:00)",
-    notice: "주말·공휴일은 휴무이며, 문의는 네이버 톡톡으로 남겨주세요.",
+    notice: "문의는 네이버 톡톡 또는 인스타그램 DM으로 남겨주세요.",
   },
 };

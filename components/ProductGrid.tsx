@@ -21,8 +21,8 @@ export default function ProductGrid({ products }: { products: Product[] }) {
             onClick={() => setCategory(c)}
             className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
               category === c
-                ? "bg-clay-500 text-white shadow-lift"
-                : "bg-white text-ink-500 shadow-soft hover:text-clay-600"
+                ? "bg-mint-500 text-white shadow-lift"
+                : "bg-white text-ink-500 shadow-soft hover:text-mint-600"
             }`}
           >
             {c}

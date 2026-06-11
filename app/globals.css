@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  @apply bg-cream-100 text-ink-700 antialiased;
+  @apply bg-fog-100 text-ink-700 antialiased;
   letter-spacing: -0.01em;
 }
 
@@ -18,9 +18,9 @@ body {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-clay-500 px-7 py-3.5 font-semibold text-white shadow-lift transition hover:-translate-y-0.5 hover:bg-clay-600 active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-mint-500 px-7 py-3.5 font-semibold text-white shadow-lift transition hover:-translate-y-0.5 hover:bg-mint-600 active:translate-y-0;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-clay-200 bg-white px-7 py-3.5 font-semibold text-clay-600 transition hover:border-clay-400 hover:bg-clay-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-mint-200 bg-white px-7 py-3.5 font-semibold text-mint-600 transition hover:border-mint-400 hover:bg-mint-50;
   }
 }

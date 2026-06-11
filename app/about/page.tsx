@@ -9,19 +9,19 @@ export const metadata: Metadata = {
 
 const story = [
   {
-    emoji: "🌅",
-    title: "루미어의 시작",
-    body: "좋아하는 물건 하나가 하루의 기분을 바꾼다는 걸 알게 된 순간, 루미어가 시작됐어요. 거창한 것이 아니라 매일 손이 닿는 작은 물건들부터요.",
+    emoji: "🦨",
+    title: "누구나 겪지만, 아무도 말 못 하는",
+    body: "방귀 냄새 때문에 모임에서, 사무실에서, 데이트에서 참아본 적 있나요? 루미어는 모두가 겪지만 아무도 말하지 못하던 고민에서 시작됐어요.",
   },
   {
-    emoji: "🔍",
-    title: "직접 써보고, 또 써보고",
-    body: "모든 제품은 저희가 가장 먼저 일상에서 충분히 써본 뒤에야 소개해요. 자신 있게 권할 수 없는 물건은 올리지 않아요.",
+    emoji: "🔬",
+    title: "향수가 아니라 과학으로",
+    body: "향으로 덮으면 섞일 뿐이에요. 루미어는 활성탄소섬유(ACF)로 냄새 분자를 흡착하는 방식을 택했고, KTL 시험 인증까지 마쳤어요.",
   },
   {
-    emoji: "🤝",
-    title: "함께 만드는 브랜드",
-    body: "고객님들의 후기와 DM 한 줄 한 줄이 다음 제품의 힌트가 돼요. 루미어는 여러분과 함께 자라는 브랜드예요.",
+    emoji: "💨",
+    title: "참지 마세요, 루미어 하세요",
+    body: "속옷에 붙이는 1초의 습관이 하루의 자신감을 바꿔요. 참을 수 없는 가벼움, 그게 루미어가 만들고 싶은 일상이에요.",
   },
 ];
 
@@ -29,11 +29,11 @@ export default function AboutPage() {
   return (
     <>
       <section className="container-md py-20 text-center">
-        <p className="text-sm font-bold text-clay-500">OUR STORY</p>
+        <p className="text-sm font-bold text-mint-500">OUR STORY</p>
         <h1 className="mt-2 text-3xl font-extrabold leading-tight text-ink-900 sm:text-4xl">
-          작지만 다정한 변화를
+          아무도 말 못 하던 고민을
           <br />
-          매일의 공간에 더해요
+          가장 가볍게 해결합니다
         </h1>
         <p className="mx-auto mt-5 max-w-xl leading-relaxed text-ink-500">
           {brand.description}
@@ -47,7 +47,7 @@ export default function AboutPage() {
               key={s.title}
               className="rounded-blob bg-white p-7 shadow-soft"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-cream-200 text-2xl">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-fog-200 text-2xl">
                 {s.emoji}
               </div>
               <h2 className="mt-4 text-lg font-bold text-ink-900">{s.title}</h2>
@@ -61,7 +61,7 @@ export default function AboutPage() {
 
       <section className="container-md py-16 text-center">
         <h2 className="text-2xl font-extrabold text-ink-900">
-          루미어의 물건들이 궁금해졌다면
+          루미어가 궁금해졌다면
         </h2>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <Link href="/products" className="btn-primary">
