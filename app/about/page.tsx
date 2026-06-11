@@ -57,31 +57,30 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-fog-50">
-        <div className="container-md grid items-center gap-10 py-16 lg:grid-cols-[1.4fr_1fr]">
-          <div className="text-center lg:text-left">
-            <p className="eyebrow">Our story</p>
-            <h1 className="mt-4 text-3xl font-extrabold leading-[1.3] tracking-tight text-ink-900 sm:text-4xl">
-              아무도 말하지 못했던 고민을
-              <br />
-              가장 가볍게 해결합니다
-            </h1>
-            <p className="mx-auto mt-5 max-w-xl leading-relaxed text-ink-500 lg:mx-0">
-              루미어는 일상의 냄새 고민을 조용히 해결하는 솔루션 브랜드입니다.
-              향으로 덮지 않고, 과학으로 원인을 다루어 민망함 없이 편안한
-              하루를 제안합니다.
-            </p>
-          </div>
-          <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-blob">
-            <Image
-              src={siteImages.hero}
-              alt="루미어 제품 패키지"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 35vw"
-              className="object-cover"
-            />
-          </div>
+      <section className="relative overflow-hidden border-b border-fog-300 bg-fog-50">
+        <div className="container-md relative py-20 text-center lg:py-24">
+          <p className="eyebrow">Our story</p>
+          <h1 className="mt-4 text-3xl font-extrabold leading-[1.3] tracking-tight text-ink-900 sm:text-4xl">
+            아무도 말하지 못했던 고민을
+            <br />
+            가장 가볍게 해결합니다
+          </h1>
+          <p className="mx-auto mt-5 max-w-xl text-[15px] leading-7 text-ink-500">
+            루미어는 일상의 냄새 고민을 조용히 해결하는 솔루션 브랜드입니다.
+            <br className="hidden sm:block" />
+            향으로 덮지 않고, 과학으로 원인을 다루어 민망함 없이 편안한 하루를
+            제안합니다.
+          </p>
+        </div>
+        <div className="pointer-events-none absolute -right-10 top-1/2 hidden h-72 w-80 -translate-y-1/2 overflow-hidden rounded-2xl xl:block">
+          <Image
+            src={siteImages.hero}
+            alt=""
+            fill
+            priority
+            sizes="320px"
+            className="object-cover"
+          />
         </div>
       </section>
 
@@ -110,16 +109,28 @@ export default function AboutPage() {
             <h2 className="mt-3 text-xl font-extrabold tracking-tight text-ink-900">
               루미어가 걸어온 길
             </h2>
-            <ul className="mt-6 space-y-5">
-              {brand.trust.map((t) => (
-                <li key={t} className="flex items-start gap-3.5">
-                  <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-mint-500" />
-                  <span className="text-sm leading-relaxed text-ink-700">
-                    {t}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <div className="relative mt-7">
+              <span className="absolute bottom-2 left-[4.5px] top-2 w-px bg-fog-300" />
+              <ul className="space-y-6">
+                {brand.trust.map((t) => (
+                  <li key={t} className="relative flex items-start gap-4">
+                    <span className="relative z-10 mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-mint-500 ring-4 ring-white" />
+                    <span className="text-sm leading-relaxed text-ink-700">
+                      {t}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="relative mt-8 aspect-[5/3] w-56 overflow-hidden rounded-xl">
+              <Image
+                src="/products/pad-30-clean.jpg"
+                alt="루미어 패드 제품"
+                fill
+                sizes="224px"
+                className="object-cover"
+              />
+            </div>
           </div>
           <div className="card p-8 sm:p-10">
             <p className="eyebrow">Company</p>
@@ -157,8 +168,10 @@ export default function AboutPage() {
           <div className="mt-9 grid gap-8 sm:grid-cols-3 sm:divide-x sm:divide-mint-100">
             {why.map(({ Icon, title, body }) => (
               <div key={title} className="px-2 text-center sm:px-6">
-                <Icon className="mx-auto h-9 w-9 text-mint-600" />
-                <p className="mt-3 font-bold text-ink-900">{title}</p>
+                <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-mint-200 bg-white">
+                  <Icon className="h-7 w-7 text-mint-600" />
+                </span>
+                <p className="mt-4 font-extrabold text-ink-900">{title}</p>
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">
                   {body}
                 </p>

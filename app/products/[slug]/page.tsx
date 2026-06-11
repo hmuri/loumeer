@@ -78,12 +78,11 @@ export default function ProductDetailPage({
 
         <div className="flex flex-col">
           <p className="text-sm font-bold text-mint-600">
-            {product.roleLabel && `${product.shortDescription}`}
+            {product.shortDescription}
           </p>
           <h1 className="mt-2 text-2xl font-extrabold leading-snug tracking-tight text-ink-900 sm:text-[28px]">
             {product.displayName ?? product.name}
           </h1>
-          <p className="mt-1.5 text-sm text-ink-400">{product.name}</p>
 
           {product.reviewCount ? (
             <p className="mt-3 text-sm text-ink-500">
