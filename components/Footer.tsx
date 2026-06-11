@@ -36,19 +36,43 @@ export default function Footer() {
             <li><Link href="/products" className="hover:text-mint-600">전체 제품</Link></li>
             <li><Link href="/about" className="hover:text-mint-600">브랜드 이야기</Link></li>
           </ul>
+          <p className="mt-6 text-sm font-bold text-ink-700">판매 채널</p>
+          <p className="mt-2 text-sm leading-relaxed text-ink-500">
+            {brand.channels.join(" · ")}
+          </p>
         </div>
 
         <div>
           <p className="text-sm font-bold text-ink-700">고객센터</p>
           <ul className="mt-3 space-y-2 text-sm text-ink-500">
+            <li className="text-base font-bold text-ink-700">{brand.cs.phone}</li>
             <li>{brand.cs.hours}</li>
             <li>{brand.cs.notice}</li>
-            <li>{brand.email}</li>
+            <li>
+              <a href={`mailto:${brand.email}`} className="hover:text-mint-600">
+                {brand.email}
+              </a>
+            </li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-fog-300/60 py-5 text-center text-xs text-ink-400">
-        © {new Date().getFullYear()} {brand.name}. All rights reserved.
+
+      {/* 사업자 정보 */}
+      <div className="border-t border-fog-300/60">
+        <div className="container-md py-6 text-xs leading-relaxed text-ink-400">
+          <p>
+            상호명 {brand.company.legalName} | 대표자 {brand.company.ceo} |
+            사업자등록번호 {brand.company.bizNumber} | 통신판매업신고{" "}
+            {brand.company.mailOrderNumber}
+          </p>
+          <p className="mt-1">
+            {brand.company.address} | 고객센터 {brand.cs.phone} |{" "}
+            {brand.email}
+          </p>
+          <p className="mt-3">
+            © {new Date().getFullYear()} {brand.name}. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );

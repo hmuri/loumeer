@@ -54,6 +54,35 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 런칭 프로모션 */}
+      <section className="container-md pb-4">
+        <div className="relative overflow-hidden rounded-blob bg-ink-900 px-7 py-8 text-white sm:px-10">
+          <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-mint-500/20" />
+          <div className="pointer-events-none absolute -bottom-16 left-1/3 h-40 w-40 rounded-full bg-blue-500/20" />
+          <div className="relative flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <span className="rounded-full bg-mint-500 px-3 py-1 text-xs font-bold">
+                🎉 {brand.promo.badge}
+              </span>
+              <p className="mt-3 text-xl font-extrabold leading-snug sm:text-2xl">
+                {brand.promo.lines[0]}
+                <br />
+                {brand.promo.lines[1]}
+              </p>
+              <p className="mt-2 text-sm text-white/60">{brand.promo.note}</p>
+            </div>
+            <a
+              href={brand.smartstore}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 rounded-full bg-white px-6 py-3 font-bold text-ink-900 transition hover:-translate-y-0.5"
+            >
+              혜택 받으러 가기 →
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Best products */}
       <section className="container-md py-12">
         <div className="flex items-end justify-between">
@@ -100,6 +129,45 @@ export default function HomePage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 신뢰 요소 */}
+      <section className="container-md pb-16">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="rounded-blob bg-mint-50 p-7">
+            <p className="text-sm font-bold text-mint-600">WHY LOUMEER</p>
+            <h3 className="mt-2 text-lg font-extrabold text-ink-900">
+              믿고 쓸 수 있는 이유
+            </h3>
+            <ul className="mt-4 space-y-2.5 text-sm text-ink-700">
+              {brand.trust.map((t) => (
+                <li key={t} className="flex items-start gap-2">
+                  <span className="mt-0.5 text-mint-500">✓</span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-blob bg-blue-50 p-7">
+            <p className="text-sm font-bold text-blue-500">WHERE TO BUY</p>
+            <h3 className="mt-2 text-lg font-extrabold text-ink-900">
+              여기에서도 만날 수 있어요
+            </h3>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {brand.channels.map((c) => (
+                <span
+                  key={c}
+                  className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink-700 shadow-soft"
+                >
+                  {c}
+                </span>
+              ))}
+            </div>
+            <p className="mt-4 text-xs text-ink-400">
+              공식몰 인증 제품은 네이버 스마트스토어에서 구매하실 수 있어요.
+            </p>
           </div>
         </div>
       </section>

@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 const story = [
   {
     emoji: "🦨",
-    title: "누구나 겪지만, 아무도 말 못 하는",
-    body: "방귀 냄새 때문에 모임에서, 사무실에서, 데이트에서 참아본 적 있나요? 루미어는 모두가 겪지만 아무도 말하지 못하던 고민에서 시작됐어요.",
+    title: "'생리현상'이라는 모순에 정면돌파",
+    body: "누구나 겪지만 아무도 말하지 못하던 고민 — 방귀 냄새. 루미어는 이 모순에 정면으로 돌파한 것이 시작이에요. 그렇게 국내 최초 방귀냄새 제거패드가 태어났어요.",
   },
   {
     emoji: "🔬",
@@ -19,9 +19,9 @@ const story = [
     body: "향으로 덮으면 섞일 뿐이에요. 루미어는 활성탄소섬유(ACF)로 냄새 분자를 흡착하는 방식을 택했고, KTL 시험 인증까지 마쳤어요.",
   },
   {
-    emoji: "💨",
-    title: "참지 마세요, 루미어 하세요",
-    body: "속옷에 붙이는 1초의 습관이 하루의 자신감을 바꿔요. 참을 수 없는 가벼움, 그게 루미어가 만들고 싶은 일상이에요.",
+    emoji: "🤝",
+    title: "신선하면서도 실용적인 브랜드",
+    body: "냄새 제거 시장에서 '루미어 = 신뢰'가 되는 것이 저희의 목표예요. 참을 수 없는 가벼움, 그게 루미어가 만들고 싶은 일상이에요.",
   },
 ];
 
@@ -56,6 +56,49 @@ export default function AboutPage() {
               </p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* 걸어온 길 & 만드는 사람들 */}
+      <section className="container-md py-14">
+        <div className="rounded-blob bg-white p-8 shadow-soft sm:p-12">
+          <div className="grid gap-10 sm:grid-cols-2">
+            <div>
+              <p className="text-sm font-bold text-mint-600">MILESTONES</p>
+              <h2 className="mt-2 text-xl font-extrabold text-ink-900">
+                루미어가 걸어온 길
+              </h2>
+              <ul className="mt-5 space-y-3 text-sm leading-relaxed text-ink-500">
+                {brand.trust.map((t) => (
+                  <li key={t} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 text-mint-500">●</span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-sm font-bold text-blue-500">COMPANY</p>
+              <h2 className="mt-2 text-xl font-extrabold text-ink-900">
+                만드는 사람들
+              </h2>
+              <p className="mt-5 text-sm leading-relaxed text-ink-500">
+                루미어는 전남 여수의 {brand.company.legalName}가 만들어요.
+                네이버 공식몰을 비롯해 {brand.channels.join(", ")}에서 만나실 수
+                있어요.
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-ink-500">
+                제품 문의·제휴는{" "}
+                <a
+                  href={`mailto:${brand.email}`}
+                  className="font-semibold text-blue-500 hover:underline"
+                >
+                  {brand.email}
+                </a>
+                로 보내주세요.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

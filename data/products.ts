@@ -90,8 +90,8 @@ export const products: Product[] = [
     category: "스타터",
     badges: ["BEST"],
     naverUrl: store + "12497890371",
-    reviewCount: 40,
-    reviewScore: 4.7,
+    reviewCount: 75,
+    reviewScore: 4.53,
     purchaseOptions: [
       { label: "4개입 × 1세트", price: 8500, originalPrice: 15000, perUnit: "1개당 2,125원", naverUrl: store + "12497890371" },
       { label: "4개입 × 2세트", price: 16800, originalPrice: 30000, perUnit: "1개당 2,100원", naverUrl: store + "12497890372" },
@@ -120,8 +120,8 @@ export const products: Product[] = [
     images: ["/products/pad-30.jpg", "/products/brand-pads.jpg"],
     category: "먼슬리 플랜",
     naverUrl: store + "12843310687",
-    reviewCount: 5,
-    reviewScore: 4.2,
+    reviewCount: 11,
+    reviewScore: 4.64,
     purchaseOptions: [
       { label: "30개입 × 1박스", price: 47900, originalPrice: 117500, perUnit: "1개당 1,597원", naverUrl: store + "12843310687" },
       { label: "60개입이 더 저렴해요 →", price: 89900, originalPrice: 225000, perUnit: "1개당 1,498원", naverUrl: store + "12843347068" },
@@ -150,8 +150,8 @@ export const products: Product[] = [
     category: "먼슬리 플랜",
     badges: ["BEST"],
     naverUrl: store + "12843347068",
-    reviewCount: 6,
-    reviewScore: 5.0,
+    reviewCount: 11,
+    reviewScore: 4.64,
     purchaseOptions: [
       { label: "60개입 × 1박스", price: 89900, originalPrice: 225000, perUnit: "1개당 1,498원 · 최저단가", naverUrl: store + "12843347068" },
       { label: "가볍게 30개입부터 →", price: 47900, originalPrice: 117500, perUnit: "1개당 1,597원", naverUrl: store + "12843310687" },
