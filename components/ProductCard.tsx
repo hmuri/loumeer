@@ -1,10 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Product, discountRate, formatPrice } from "@/data/products";
+import { Product, formatPrice } from "@/data/products";
 
 export default function ProductCard({ product }: { product: Product }) {
-  const rate = discountRate(product);
-
   return (
     <Link
       href={`/products/${product.slug}`}
@@ -26,15 +24,15 @@ export default function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="border-t border-fog-200 p-4 sm:p-5">
-        {product.badges && product.badges.length > 0 && (
-          <p className="mb-1.5 text-[11px] font-bold tracking-[0.12em] text-mint-600">
-            {product.badges.join(" · ")}
+        {product.roleLabel && (
+          <p className="mb-1.5 text-[11px] font-bold tracking-[0.08em] text-mint-600">
+            {product.roleLabel}
           </p>
         )}
-        <h3 className="line-clamp-2 font-semibold leading-snug text-ink-900">
-          {product.name}
+        <h3 className="font-bold leading-snug text-ink-900">
+          {product.displayName ?? product.name}
         </h3>
-        <p className="mt-1 text-[13px] text-ink-400">
+        <p className="mt-1 line-clamp-1 text-[13px] text-ink-400">
           {product.shortDescription}
         </p>
         <div className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
@@ -46,15 +44,10 @@ export default function ProductCard({ product }: { product: Product }) {
               {formatPrice(product.originalPrice)}
             </span>
           )}
-          {rate && (
-            <span className="text-[12px] font-bold text-mint-600">
-              {rate}% OFF
-            </span>
-          )}
         </div>
         {product.reviewCount ? (
           <p className="mt-1.5 text-xs text-ink-400">
-            ★ {product.reviewScore?.toFixed(1)} 리뷰 {product.reviewCount}
+            ★ {product.reviewScore?.toFixed(1)} · 리뷰 {product.reviewCount}
           </p>
         ) : null}
       </div>

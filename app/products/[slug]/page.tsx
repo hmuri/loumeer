@@ -4,12 +4,25 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import ProductGallery from "@/components/ProductGallery";
 import ProductCard from "@/components/ProductCard";
+import { siteImages } from "@/data/images";
 import {
-  discountRate,
   formatPrice,
   getProduct,
   products,
 } from "@/data/products";
+import {
+  PackageIcon,
+  BriefsIcon,
+  TrashIcon,
+  SunIcon,
+  ChairIcon,
+  CalendarIcon,
+  SparkleIcon,
+  ShieldIcon,
+  AwardIcon,
+  LeafIcon,
+  PadIcon,
+} from "@/components/icons";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -23,10 +36,30 @@ export function generateMetadata({
   const product = getProduct(params.slug);
   if (!product) return {};
   return {
-    title: product.name,
+    title: product.displayName ?? product.name,
     description: product.shortDescription,
   };
 }
+
+const steps = [
+  { Icon: PackageIcon, no: "01", title: "뜯고", body: "개별 포장을 뜯어요." },
+  { Icon: BriefsIcon, no: "02", title: "붙이고", body: "속옷 안쪽에 붙여요. 피부에 닿지 않아요." },
+  { Icon: TrashIcon, no: "03", title: "버리면 끝", body: "하루 사용 후 떼어 버리면 끝!" },
+];
+
+const moments = [
+  { Icon: SunIcon, title: "출근 전", body: "하루를 산뜻하게 시작하고 싶을 때" },
+  { Icon: ChairIcon, title: "오래 앉아 있는 날", body: "장시간 착용에도 쾌적함을 유지하고 싶을 때" },
+  { Icon: CalendarIcon, title: "중요한 약속 전", body: "자신감을 갖고 불편함 없이 지내고 싶을 때" },
+  { Icon: SparkleIcon, title: "예민한 날", body: "컨디션이 예민할 때 더 신경 쓰일 때" },
+];
+
+const trust = [
+  { Icon: ShieldIcon, title: "KTL 시험 인증 완료", body: "공식 인증으로 검증된 성능 시험 통과" },
+  { Icon: AwardIcon, title: "국내 최초 방귀냄새 제거패드", body: "차별화된 아이디어와 기술력으로 시작된 제품" },
+  { Icon: LeafIcon, title: "활성탄소섬유 ACF", body: "흡착력이 뛰어난 검증된 프리미엄 소재 사용" },
+  { Icon: PadIcon, title: "엄선한 원자재 사용", body: "안전성을 고려해 엄선된 원자재 사용" },
+];
 
 export default function ProductDetailPage({
   params,
@@ -36,39 +69,32 @@ export default function ProductDetailPage({
   const product = getProduct(params.slug);
   if (!product) notFound();
 
-  const rate = discountRate(product);
   const others = products.filter((p) => p.slug !== product.slug).slice(0, 3);
 
   return (
     <article className="container-md py-12">
-      <nav className="text-sm text-ink-400">
-        <Link href="/products" className="hover:text-ink-900">
-          전체 제품
-        </Link>
-        <span className="mx-2">›</span>
-        <span>{product.category}</span>
-      </nav>
-
-      <div className="mt-6 grid gap-10 lg:grid-cols-2 lg:gap-14">
+      <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
         <ProductGallery images={product.images} name={product.name} />
 
         <div className="flex flex-col">
-          <p className="text-sm font-medium text-ink-400">
-            {product.shortDescription}
+          <p className="text-sm font-bold text-mint-600">
+            {product.roleLabel && `${product.shortDescription}`}
           </p>
-          <h1 className="mt-2 text-2xl font-extrabold leading-snug tracking-tight text-ink-900 sm:text-3xl">
-            {product.name}
+          <h1 className="mt-2 text-2xl font-extrabold leading-snug tracking-tight text-ink-900 sm:text-[28px]">
+            {product.displayName ?? product.name}
           </h1>
+          <p className="mt-1.5 text-sm text-ink-400">{product.name}</p>
 
           {product.reviewCount ? (
-            <p className="mt-2.5 text-sm text-ink-400">
-              ★ <strong className="text-ink-700">{product.reviewScore?.toFixed(1)}</strong>{" "}
-              리뷰 {product.reviewCount}개
+            <p className="mt-3 text-sm text-ink-500">
+              <span className="text-mint-600">★</span>{" "}
+              <strong>{product.reviewScore?.toFixed(1)}</strong> · 리뷰{" "}
+              {product.reviewCount}개
             </p>
           ) : null}
 
-          <div className="mt-5 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-            <span className="text-3xl font-extrabold text-ink-900">
+          <div className="mt-4 flex items-baseline gap-2.5">
+            <span className="text-[28px] font-extrabold text-ink-900">
               {formatPrice(product.price)}
             </span>
             {product.originalPrice && (
@@ -76,53 +102,61 @@ export default function ProductDetailPage({
                 {formatPrice(product.originalPrice)}
               </span>
             )}
-            {rate && (
-              <span className="text-sm font-bold text-mint-600">
-                {rate}% OFF
-              </span>
-            )}
           </div>
 
           {product.purchaseOptions && product.purchaseOptions.length > 0 && (
-            <div className="mt-7">
+            <div className="mt-6">
               <p className="text-sm font-bold text-ink-900">구성 선택</p>
-              <ul className="mt-2.5 space-y-2">
+              <div
+                className={`mt-2.5 grid gap-2.5 ${
+                  product.purchaseOptions.length > 1 ? "sm:grid-cols-3" : ""
+                }`}
+              >
                 {product.purchaseOptions.map((o, i) => (
-                  <li key={o.label}>
-                    <a
-                      href={o.naverUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`block rounded-xl border px-5 py-4 transition ${
-                        i === 0
-                          ? "border-mint-500 bg-mint-50/60 hover:bg-mint-50"
-                          : "border-fog-300 bg-white hover:border-ink-400"
-                      }`}
-                    >
-                      {o.tag && (
-                        <span
-                          className={`text-[11px] font-bold ${
-                            i === 0 ? "text-mint-600" : "text-ink-400"
-                          }`}
-                        >
-                          {o.tag}
-                        </span>
-                      )}
-                      <span className="mt-0.5 flex items-baseline justify-between gap-3">
-                        <span className="text-sm font-semibold text-ink-900">
-                          {o.label}
-                        </span>
-                        <span className="shrink-0 font-extrabold text-ink-900">
-                          {formatPrice(o.price)}
-                        </span>
+                  <a
+                    key={o.label}
+                    href={o.naverUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`relative flex flex-col rounded-xl border p-4 text-center transition ${
+                      i === 0
+                        ? "border-mint-500 bg-white"
+                        : "border-fog-300 bg-white hover:border-ink-400"
+                    }`}
+                  >
+                    {i === 0 && product.purchaseOptions!.length > 1 && (
+                      <span className="absolute -top-2.5 left-3 rounded-md bg-mint-500 px-2 py-0.5 text-[11px] font-bold text-white">
+                        추천
                       </span>
-                      {o.perUnit && (
-                        <span className="text-xs text-ink-400">{o.perUnit}</span>
+                    )}
+                    <span className="font-bold text-ink-900">{o.label}</span>
+                    {o.description && (
+                      <span className="mt-1 text-[12px] leading-snug text-ink-400">
+                        {o.description}
+                      </span>
+                    )}
+                    {o.image && (
+                      <span className="relative mx-auto mt-3 block h-20 w-20 overflow-hidden rounded-lg">
+                        <Image
+                          src={o.image}
+                          alt={o.label}
+                          fill
+                          sizes="80px"
+                          className="object-cover"
+                        />
+                      </span>
+                    )}
+                    <span className="mt-3 text-[15px] font-extrabold text-ink-900">
+                      {formatPrice(o.price)}
+                      {o.originalPrice && (
+                        <span className="ml-1.5 text-xs font-normal text-ink-400 line-through">
+                          {formatPrice(o.originalPrice)}
+                        </span>
                       )}
-                    </a>
-                  </li>
+                    </span>
+                  </a>
                 ))}
-              </ul>
+              </div>
 
               {product.moreOptions && product.moreOptions.length > 0 && (
                 <details className="mt-3">
@@ -151,7 +185,7 @@ export default function ProductDetailPage({
             </div>
           )}
 
-          <div className="mt-7 flex flex-col gap-2.5 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
             <a
               href={product.naverUrl}
               target="_blank"
@@ -160,10 +194,10 @@ export default function ProductDetailPage({
                 product.soldOut ? "pointer-events-none opacity-40" : ""
               }`}
             >
-              {product.soldOut ? "품절되었어요" : "네이버 스마트스토어에서 구매하기"}
+              {product.soldOut ? "품절되었어요" : "네이버스토어에서 구매하기 ↗"}
             </a>
-            <Link href="/products" className="btn-ghost">
-              계속 둘러보기
+            <Link href="/about" className="btn-ghost">
+              브랜드 이야기 보기
             </Link>
           </div>
 
@@ -177,42 +211,93 @@ export default function ProductDetailPage({
         </div>
       </div>
 
-      {/* 제품 이야기 — 좌측 정렬 */}
-      <section className="mx-auto mt-24 max-w-3xl">
-        <div className="space-y-16">
-          {product.detail.map((section, i) => (
-            <div key={i}>
-              <h3 className="text-xl font-extrabold tracking-tight text-ink-900 sm:text-2xl">
-                {section.heading}
-              </h3>
-              <p className="mt-3 max-w-xl leading-relaxed text-ink-500">
-                {section.body}
-              </p>
-              {section.image && (
-                <div className="card relative mt-6 aspect-[3/2] overflow-hidden">
-                  <Image
-                    src={section.image}
-                    alt={section.heading}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 768px"
-                    className="object-cover"
-                  />
+      {/* 사용법 */}
+      <section className="mt-20">
+        <div className="rounded-[1.75rem] bg-fog-100 px-6 py-12 sm:px-10">
+          <h2 className="text-center text-2xl font-extrabold tracking-tight text-ink-900">
+            루미어는 이렇게 사용해요
+          </h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {steps.map(({ Icon, no, title, body }) => (
+              <div key={no} className="card flex items-center gap-5 px-6 py-6">
+                <span className="text-sm font-bold text-mint-600">{no}</span>
+                <Icon className="h-9 w-9 shrink-0 text-ink-500" />
+                <div>
+                  <p className="font-bold text-ink-900">{title}</p>
+                  <p className="mt-0.5 text-[13px] leading-snug text-ink-400">
+                    {body}
+                  </p>
                 </div>
-              )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 철학 + 제품 이야기 */}
+      <section className="mt-12">
+        <div className="card grid items-center gap-8 overflow-hidden lg:grid-cols-2">
+          <div className="px-8 py-10 sm:px-12">
+            <h2 className="text-[24px] font-extrabold leading-[1.3] tracking-tight text-ink-900">
+              향으로 덮지 않고,
+              <br />
+              흡착으로 줄입니다
+            </h2>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-500">
+              활성탄소섬유(ACF)가 냄새 분자를 촘촘히 흡착해 근본적인 냄새를
+              줄여줘요.
+            </p>
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-500">
+              피부가 아닌 속옷 안쪽에 부착하는 방식이라 하루 종일 편안하게
+              사용하실 수 있어요.
+            </p>
+          </div>
+          <div className="relative aspect-[3/2] lg:aspect-auto lg:h-full">
+            <Image
+              src={product.detail.find((d) => d.image)?.image ?? siteImages.philosophy}
+              alt="루미어 패드"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 이런 날 추천해요 */}
+      <section className="mt-12">
+        <h2 className="text-xl font-extrabold tracking-tight text-ink-900">
+          이런 날 추천해요
+        </h2>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {moments.map(({ Icon, title, body }) => (
+            <div key={title} className="card p-5">
+              <div className="flex items-center gap-2.5">
+                <Icon className="h-5 w-5 text-mint-600" />
+                <p className="font-bold text-ink-900">{title}</p>
+              </div>
+              <p className="mt-2 text-[13px] leading-relaxed text-ink-400">
+                {body}
+              </p>
             </div>
           ))}
         </div>
+      </section>
 
-        {/* 사용법 3단계 */}
-        <div className="mt-16 grid gap-4 sm:grid-cols-3">
-          {[
-            ["1", "개별 포장을 뜯어요"],
-            ["2", "속옷 안쪽에 붙여요"],
-            ["3", "하루 사용 후 떼어 버려요"],
-          ].map(([no, t]) => (
-            <div key={no} className="card px-5 py-6">
-              <p className="text-sm font-bold text-mint-600">STEP {no}</p>
-              <p className="mt-1.5 text-sm font-semibold text-ink-900">{t}</p>
+      {/* 안심 근거 */}
+      <section className="mt-12">
+        <div className="card grid gap-7 px-8 py-8 sm:grid-cols-2 lg:grid-cols-4">
+          {trust.map(({ Icon, title, body }) => (
+            <div key={title} className="flex items-start gap-3.5">
+              <Icon className="h-7 w-7 shrink-0 text-mint-600" />
+              <div>
+                <p className="text-sm font-bold leading-snug text-ink-900">
+                  {title}
+                </p>
+                <p className="mt-1 text-[13px] leading-relaxed text-ink-400">
+                  {body}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -235,7 +320,7 @@ export default function ProductDetailPage({
 
       {/* 다른 제품 */}
       {others.length > 0 && (
-        <section className="mt-24">
+        <section className="mt-20">
           <h2 className="text-xl font-extrabold tracking-tight text-ink-900">
             다른 구성도 있어요
           </h2>

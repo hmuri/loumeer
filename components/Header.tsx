@@ -6,6 +6,7 @@ import { useState } from "react";
 import { brand } from "@/data/brand";
 
 const nav = [
+  { href: "/", label: "홈" },
   { href: "/products", label: "전체 제품" },
   { href: "/about", label: "브랜드 이야기" },
 ];
@@ -26,16 +27,22 @@ export default function Header() {
 
         <nav className="hidden items-center gap-7 sm:flex">
           {nav.map((item) => {
-            const active = pathname.startsWith(item.href);
+            const active =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-[15px] font-medium transition ${
+                className={`relative text-[15px] font-medium transition ${
                   active ? "text-ink-900" : "text-ink-400 hover:text-ink-900"
                 }`}
               >
                 {item.label}
+                {active && (
+                  <span className="absolute -bottom-2 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-mint-500" />
+                )}
               </Link>
             );
           })}
@@ -43,9 +50,9 @@ export default function Header() {
             href={brand.smartstore}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xl border border-fog-300 bg-white px-4 py-2 text-sm font-semibold text-ink-700 transition hover:border-mint-500 hover:text-mint-600"
+            className="rounded-full bg-mint-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-mint-600"
           >
-            네이버스토어
+            네이버스토어 ↗
           </a>
         </nav>
 

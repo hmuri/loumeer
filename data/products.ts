@@ -22,6 +22,8 @@ export interface DetailSection {
 export interface PurchaseOption {
   tag?: string; // "처음 써보는 분께 추천" 등
   label: string;
+  description?: string; // 구성 한 줄 설명
+  image?: string;
   price: number;
   originalPrice?: number;
   perUnit?: string;
@@ -30,7 +32,9 @@ export interface PurchaseOption {
 
 export interface Product {
   slug: string;
-  name: string;
+  name: string; // 스마트스토어 정식 상품명 (1:1)
+  displayName?: string; // 사이트 표기용 짧은 이름
+  roleLabel?: string; // "처음 경험용" 등 구성 역할
   shortDescription: string;
   price: number;
   originalPrice?: number;
@@ -55,8 +59,10 @@ const cdn = "https://shop-phinf.pstatic.net/";
 /** 추천 구성 3종 — 모든 상세 페이지에서 공유 */
 const recommendedOptions: PurchaseOption[] = [
   {
-    tag: "처음 써보는 분께 추천",
-    label: "4개입 × 1세트 + 1개 증정",
+    tag: "추천",
+    label: "4+1 스타터",
+    description: "10cm × 10cm 패드 4개 + 1개 추가 증정",
+    image: "/products/brand-pads-clean.jpg",
     price: 8500,
     originalPrice: 15000,
     perUnit: "1개당 2,125원",
@@ -64,15 +70,19 @@ const recommendedOptions: PurchaseOption[] = [
   },
   {
     tag: "매일 관리용",
-    label: "30개입 먼슬리 플랜",
+    label: "30개입 플랜",
+    description: "루미어 패드 30개 (개별 포장)",
+    image: "/products/pad-30-clean.jpg",
     price: 47900,
     originalPrice: 117500,
     perUnit: "1개당 1,597원",
     naverUrl: store + "12843310687",
   },
   {
-    tag: "가장 경제적인 구성",
-    label: "60개입 먼슬리 플랜",
+    tag: "넉넉한 준비용",
+    label: "60개입 플랜",
+    description: "루미어 패드 60개 (개별 포장)",
+    image: "/products/pad-60-clean.jpg",
     price: 89900,
     originalPrice: 225000,
     perUnit: "1개당 1,498원 · 최저단가",
@@ -128,7 +138,9 @@ export const products: Product[] = [
   {
     slug: "pad-4plus1",
     name: "루미어 방귀냄새 제거패드 4+1 (4개입)",
-    shortDescription: "처음이라면 부담 없이 시작하는 구성",
+    displayName: "4+1 스타터",
+    roleLabel: "처음 경험용",
+    shortDescription: "처음 사용해보는 분들을 위한 가장 합리적인 구성",
     price: 8500,
     originalPrice: 15000,
     images: ["/products/brand-pads-clean.jpg", "/products/pad-30-clean.jpg"],
@@ -154,7 +166,9 @@ export const products: Product[] = [
   {
     slug: "pad-monthly-30",
     name: "루미어 방귀냄새 제거패드 먼슬리 플랜 30개입",
-    shortDescription: "매일 관리에 적합한 구성",
+    displayName: "30개입 플랜",
+    roleLabel: "매일 관리용",
+    shortDescription: "매일 사용하기 좋은 경제적인 한 달 구성",
     price: 47900,
     originalPrice: 117500,
     images: ["/products/pad-30-clean.jpg", "/products/brand-pads-clean.jpg"],
@@ -175,7 +189,9 @@ export const products: Product[] = [
   {
     slug: "pad-monthly-60",
     name: "루미어 방귀냄새 제거패드 먼슬리 플랜 60개입",
-    shortDescription: "가장 경제적인 대용량 구성",
+    displayName: "60개입 플랜",
+    roleLabel: "넉넉한 준비용",
+    shortDescription: "넉넉한 대용량으로 더 오래, 더 편안하게",
     price: 89900,
     originalPrice: 225000,
     images: ["/products/pad-60-clean.jpg", "/products/brand-pads-clean.jpg"],
@@ -197,6 +213,8 @@ export const products: Product[] = [
   {
     slug: "pad-poopcast",
     name: "[풉캐스트 전용] 루미어 방귀냄새 제거패드 4+1",
+    displayName: "풉캐스트 콜라보 4+1",
+    roleLabel: "한정 에디션",
     shortDescription: "루미어 × POOPCAST 콜라보 에디션",
     price: 15000,
     images: ["/products/poopcast.jpg", "/products/brand-pads-clean.jpg"],
