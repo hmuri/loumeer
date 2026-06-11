@@ -53,11 +53,13 @@ export default function Footer() {
           <p className="text-sm font-bold text-ink-900">고객센터</p>
           <ul className="mt-3 space-y-2 text-sm text-ink-400">
             <li className="font-semibold text-ink-700">{brand.cs.phone}</li>
-            <li>{brand.cs.hours}</li>
             <li>{brand.cs.notice}</li>
             <li>
-              <a href={`mailto:${brand.email}`} className="hover:text-ink-900">
-                {brand.email}
+              <a
+                href={`mailto:${brand.cs.email}`}
+                className="hover:text-ink-900"
+              >
+                {brand.cs.email}
               </a>
             </li>
           </ul>
@@ -72,7 +74,8 @@ export default function Footer() {
             {brand.company.mailOrderNumber}
           </p>
           <p className="mt-1">
-            {brand.company.address} · 고객센터 {brand.cs.phone} · {brand.email}
+            {brand.company.address} · 고객센터 {brand.cs.phone} ·{" "}
+            {brand.cs.email}
           </p>
           <p className="mt-3">
             © {new Date().getFullYear()} {brand.name}. All rights reserved.

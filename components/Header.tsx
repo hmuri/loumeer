@@ -19,15 +19,18 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-fog-300 bg-fog-50/95 backdrop-blur">
       <div className="container-md flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center" aria-label="루미어 홈">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="루미어 홈">
           <Image
-            src={brand.logo}
-            alt="Loumeer 로고"
-            width={130}
-            height={40}
+            src={brand.symbol}
+            alt=""
+            width={32}
+            height={32}
             priority
-            className="h-8 w-auto"
+            className="h-8 w-8 rounded-lg"
           />
+          <span className="text-lg font-extrabold tracking-[0.08em] text-ink-900">
+            LOUMEER
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-7 sm:flex">
