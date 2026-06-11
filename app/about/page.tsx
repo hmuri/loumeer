@@ -50,32 +50,32 @@ export default function AboutPage() {
     <>
       {/* Hero */}
       <section className="border-b border-fog-300 bg-white">
-        <div className="container-md grid items-center gap-10 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
-          <div>
+        <div className="container-md flex flex-col items-center gap-10 py-16 lg:flex-row lg:justify-center lg:gap-14 lg:py-20">
+          {/* 가운데 정렬 텍스트 */}
+          <div className="text-center">
             <span className="inline-flex rounded-full bg-mint-50 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-mint-700">
               Our story
             </span>
-            <h1 className="mt-5 break-keep text-[28px] font-bold leading-[1.32] tracking-tight text-ink-900 sm:text-[36px]">
+            <h1 className="mt-5 break-keep text-[28px] font-bold leading-[1.32] tracking-tight text-ink-900 sm:text-[34px]">
               아무도 말하지 못했던 고민을
               <br />
               가장 가볍게 해결합니다
             </h1>
-            <p className="mt-5 max-w-[520px] break-keep text-[15px] leading-7 text-ink-500">
+            <p className="mx-auto mt-5 max-w-[480px] break-keep text-[15px] leading-7 text-ink-500">
               루미어는 일상의 냄새 고민을 조용히 해결하는 솔루션 브랜드입니다.
-              향으로 덮지 않고, 과학으로 원인을 다루어 민망함 없이 편안한
-              하루를 제안합니다.
+              향으로 덮지 않고, 과학으로 원인을 다루어 민망함 없이 편안한 하루를
+              제안합니다.
             </p>
           </div>
-          <div className="flex items-center justify-center">
-            <Image
-              src={siteImages.hero}
-              alt="루미어 방귀냄새 제거패드 패키지와 패드"
-              width={515}
-              height={475}
-              priority
-              className="w-full max-w-[520px] rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
-            />
-          </div>
+          {/* 텍스트 바로 옆에 붙는 이미지 */}
+          <Image
+            src={siteImages.hero}
+            alt="루미어 방귀냄새 제거패드 패키지와 패드"
+            width={515}
+            height={475}
+            priority
+            className="w-full max-w-[400px] shrink-0 rounded-[24px] shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
+          />
         </div>
       </section>
 
@@ -150,9 +150,9 @@ export default function AboutPage() {
               만드는 사람들
             </h2>
             <p className="mt-6 text-sm leading-relaxed text-ink-500">
-              루미어는 {brand.company.legalName}가 만듭니다. 생활 속 불편을
-              작은 아이디어와 과학으로 해결하고자 모인 사람들이, 더 나은
-              일상을 위해 오늘도 연구합니다.
+              루미어는 {brand.company.legalName}가 만듭니다. 생활 속 불편을 작은
+              아이디어와 과학으로 해결하고자 모인 사람들이, 더 나은 일상을 위해
+              오늘도 연구합니다.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-ink-500">
               루미어는 {brand.channels.join(", ")}에서 만나실 수 있습니다.
@@ -199,15 +199,7 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="container-md relative pb-20 text-center">
-        <div className="pointer-events-none absolute bottom-0 right-0 hidden w-56 opacity-90 lg:block">
-          <Image
-            src={siteImages.story.plant}
-            alt=""
-            width={262}
-            height={169}
-            className="w-full"
-          />
-        </div>
+        <div className="pointer-events-none absolute bottom-0 right-0 hidden w-56 opacity-90 lg:block"></div>
         <h2 className="text-2xl font-extrabold tracking-tight text-ink-900">
           루미어가 궁금해졌다면
         </h2>
