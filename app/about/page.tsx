@@ -102,32 +102,34 @@ export default function AboutPage() {
       {/* 걸어온 길 & 만드는 사람들 */}
       <section className="container-md pb-12">
         <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
-          <div className="card p-8 sm:p-10">
-            <p className="eyebrow">Milestones</p>
-            <h2 className="mt-3 text-xl font-extrabold tracking-tight text-ink-900">
-              루미어가 걸어온 길
-            </h2>
-            <div className="relative mt-7">
-              <span className="absolute bottom-2 left-[4.5px] top-2 w-px bg-fog-300" />
-              <ul className="space-y-6">
-                {brand.trust.map((t) => (
-                  <li key={t} className="relative flex items-start gap-4">
-                    <span className="relative z-10 mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-mint-500 ring-4 ring-white" />
-                    <span className="text-sm leading-relaxed text-ink-700">
-                      {t}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mt-8">
-              <Image
-                src={siteImages.story.stilllife}
-                alt="루미어 패드 제품"
-                width={252}
-                height={142}
-                className="w-56 rounded-xl"
-              />
+          <div className="card relative overflow-hidden p-8 sm:p-10">
+            {/* 배경: 제품 스틸라이프 */}
+            <Image
+              src={siteImages.story.stilllife}
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/55" />
+            <div className="relative">
+              <p className="eyebrow">Milestones</p>
+              <h2 className="mt-3 text-xl font-extrabold tracking-tight text-ink-900">
+                루미어가 걸어온 길
+              </h2>
+              <div className="relative mt-7">
+                <span className="absolute bottom-2 left-[4.5px] top-2 w-px bg-fog-300" />
+                <ul className="space-y-6">
+                  {brand.trust.map((t) => (
+                    <li key={t} className="relative flex items-start gap-4">
+                      <span className="relative z-10 mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-mint-500 ring-4 ring-white" />
+                      <span className="text-sm font-medium leading-relaxed text-ink-700">
+                        {t}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
           <div className="card p-8 sm:p-10">
