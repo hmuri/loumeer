@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import ProductGallery from "@/components/ProductGallery";
 import ProductCard from "@/components/ProductCard";
 import { siteImages } from "@/data/images";
+import { SITE_URL } from "@/data/site";
 import {
   formatPrice,
   getProduct,
@@ -58,8 +59,38 @@ export default function ProductDetailPage({
 
   const others = products.filter((p) => p.slug !== product.slug).slice(0, 3);
 
+  // 구글 검색 결과 리치 스니펫용 구조화 데이터
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    image: product.images.map((i) => SITE_URL + i),
+    description: product.shortDescription,
+    brand: { "@type": "Brand", name: "LOUMEER" },
+    ...(product.reviewCount
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: product.reviewScore,
+            reviewCount: product.reviewCount,
+          },
+        }
+      : {}),
+    offers: {
+      "@type": "Offer",
+      price: product.price,
+      priceCurrency: "KRW",
+      availability: "https://schema.org/InStock",
+      url: product.naverUrl,
+    },
+  };
+
   return (
     <article className="container-md py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
         <ProductGallery images={product.images} name={product.name} />
 

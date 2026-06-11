@@ -230,6 +230,47 @@ export const products: Product[] = [
   },
 ];
 
+/** 4+1 수량 변형 리스팅 (×2~×5) — 스토어 1:1, 전체 제품 그리드에 노출 */
+const starterVariant = (
+  count: number,
+  price: number,
+  originalPrice: number,
+  productNo: string
+): Product => ({
+  slug: `pad-4plus1-x${count}`,
+  name: `루미어 방귀냄새 제거패드 과민성대장증후군 가스실금 4+1 10x10cm, 4개입, ${count}개`,
+  shortDescription: `4개입 묶음 구성으로 더 합리적으로`,
+  price,
+  originalPrice,
+  images: ["/products/brand-pads-clean.jpg", "/products/pad-30-clean.jpg"],
+  category: "4+1",
+  naverUrl: store + productNo,
+  reviewCount: 75,
+  reviewScore: 4.53,
+  purchaseOptions: recommendedOptions,
+  moreOptions: starterMoreOptions.filter(
+    (o) => !o.naverUrl.endsWith(productNo)
+  ),
+  detail: [
+    {
+      heading: "쓸수록 합리적인 묶음 구성",
+      body: "이미 루미어를 알고 있다면, 묶음 구성으로 1개당 가격을 더 낮춰보세요. 개별 포장이라 보관도 간편해요.",
+    },
+    ...howTo,
+  ],
+  detailImages: [
+    cdn + "20251031_125/1761875785319hhAV4_JPEG/1.jpg",
+    ...commonDetailImages,
+  ],
+});
+
+products.push(
+  starterVariant(2, 16800, 30000, "12497890372"),
+  starterVariant(3, 24900, 45000, "12497890373"),
+  starterVariant(4, 32800, 60000, "12497890374"),
+  starterVariant(5, 40500, 75000, "12497890375")
+);
+
 export const formatPrice = (n: number) => n.toLocaleString("ko-KR") + "원";
 
 export const discountRate = (p: { price: number; originalPrice?: number }) =>
