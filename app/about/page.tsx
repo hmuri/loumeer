@@ -67,15 +67,6 @@ export default function AboutPage() {
               제안합니다.
             </p>
           </div>
-          {/* 텍스트 바로 옆에 붙는 이미지 */}
-          <Image
-            src={siteImages.hero}
-            alt="루미어 방귀냄새 제거패드 패키지와 패드"
-            width={515}
-            height={475}
-            priority
-            className="w-full max-w-[400px] shrink-0 rounded-[24px] shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
-          />
         </div>
       </section>
 
