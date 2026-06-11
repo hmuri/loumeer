@@ -92,11 +92,11 @@ const steps = [
   },
 ];
 
-/** 홈 제품 카드 이미지 (에셋 팩) */
+/** 홈 제품 카드 이미지 — 스마트스토어 원본 기반 고해상 컷 */
 const productImages: Record<string, string> = {
-  "pad-4plus1": siteImages.products.starter,
-  "pad-monthly-30": siteImages.products.plan30,
-  "pad-monthly-60": siteImages.products.plan60,
+  "pad-4plus1": "/products/brand-pads-clean.jpg",
+  "pad-monthly-30": "/products/pad-30-clean.jpg",
+  "pad-monthly-60": "/products/pad-60-clean.jpg",
 };
 
 export default function HomePage() {
@@ -250,13 +250,13 @@ export default function HomePage() {
                   <p className="mx-auto mt-2 min-h-[40px] max-w-[190px] text-[13px] leading-relaxed text-ink-500">
                     {product.shortDescription}
                   </p>
-                  <div className="mt-6 flex h-32 items-center justify-center">
+                  <div className="relative mt-5 aspect-[4/3] overflow-hidden rounded-2xl">
                     <Image
                       src={productImages[product.slug] ?? product.images[0]}
                       alt={product.name}
-                      width={92}
-                      height={86}
-                      className="h-28 w-auto object-contain transition duration-500 group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 640px) 100vw, 28vw"
+                      className="object-cover transition duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
                   <div className="mt-auto border-t border-fog-200 pt-4">
@@ -364,7 +364,7 @@ export default function HomePage() {
             href={products[0].naverUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary absolute bottom-[9%] left-[3.5%] hidden sm:inline-flex"
+            className="btn-primary absolute bottom-[20%] left-[5.5%] hidden sm:inline-flex"
           >
             네이버스토어에서 구매하기 ↗
           </a>
