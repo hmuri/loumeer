@@ -122,37 +122,55 @@ export default function ProductDetailPage({
         </div>
       </section>
 
-      {/* 철학 + 제품 이야기 */}
+      {/* 사용 가이드 — 권장 사용 기간 & 소취 팁 */}
       <section className="mt-12">
-        <div className="card grid items-center gap-8 overflow-hidden lg:grid-cols-2">
-          <div className="px-8 py-10 sm:px-12">
-            <h2 className="break-keep text-[24px] font-extrabold leading-[1.3] tracking-tight text-ink-900">
-              향으로 덮지 않고,
-              <br />
-              흡착으로 줄입니다
-            </h2>
-            <p className="mt-4 max-w-md break-keep text-sm leading-relaxed text-ink-500">
-              활성탄소섬유(ACF)가 냄새 분자를 촘촘히 흡착해 근본적인 냄새를
-              줄여줘요.
-            </p>
-            <p className="mt-3 max-w-md break-keep text-sm leading-relaxed text-ink-500">
-              피부가 아닌 속옷 안쪽에 부착하는 방식이라 하루 종일 편안하게
-              사용하실 수 있어요.
-            </p>
-          </div>
-          <div className="relative aspect-[3/2] lg:aspect-auto lg:h-full">
-            <Image
-              src={
-                product.detail.find((d) => d.image)?.image ??
-                siteImages.philosophy
-              }
-              alt="루미어 패드"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
+        <div className="rounded-[1.75rem] bg-mint-50/70 px-6 py-11 sm:px-10">
+          <h2 className="text-center text-2xl font-extrabold tracking-tight text-ink-900">
+            더 확실하게 쓰는 법
+          </h2>
+          <p className="mx-auto mt-2 max-w-xl break-keep text-center text-sm leading-relaxed text-ink-500">
+            루미어 패드는 특수 가공된 활성탄소섬유가 냄새 유발 분자를 흡착해
+            가두는 방식이에요. 최상의 효과를 위해 참고해 주세요.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="card p-7">
+              <p className="text-xs font-bold tracking-wide text-mint-600">
+                권장 사용 기간
+              </p>
+              <p className="mt-2 text-lg font-extrabold text-ink-900">
+                1일 1패드, 매일 새것으로
+              </p>
+              <p className="mt-3 break-keep text-sm leading-relaxed text-ink-500">
+                필터가 흡착할 수 있는 용량에는 한계가 있어요. 매일 새 제품으로
+                교체해 주시는 것이 가장 이상적인 성능을 발휘합니다.
+              </p>
+            </div>
+            <div className="card p-7">
+              <p className="text-xs font-bold tracking-wide text-mint-600">
+                착용 팁 · 밀착의 중요성
+              </p>
+              <p className="mt-2 text-lg font-extrabold text-ink-900">
+                굴곡에 완벽히 밀착되게
+              </p>
+              <p className="mt-3 break-keep text-sm leading-relaxed text-ink-500">
+                패드와 신체 사이에 빈틈이 있으면 냄새가 새어 나갈 수 있어요.
+                배출 직전, 패드가 엉덩이 굴곡에 완벽히 밀착되도록 착용 위치를
+                조정하면 소취 효과를 극대화할 수 있습니다.
+              </p>
+            </div>
           </div>
         </div>
+      </section>
+
+      {/* 철학 배너 — "향으로 덮지 않고, 흡착으로 줄입니다" */}
+      <section className="mt-12">
+        <Image
+          src={siteImages.detail.supportBanner}
+          alt="향으로 덮지 않고, 흡착으로 줄입니다 — 활성탄소섬유(ACF)가 냄새 분자를 흡착해 효과적"
+          width={2172}
+          height={724}
+          className="w-full rounded-[24px]"
+        />
       </section>
 
       {/* 이런 날 추천해요 */}
